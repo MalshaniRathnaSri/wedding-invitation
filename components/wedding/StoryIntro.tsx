@@ -1,8 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function StoryIntro() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-[#f5f1e8] text-[#171512] px-6 overflow-hidden">
       <motion.div
@@ -10,42 +25,50 @@ export default function StoryIntro() {
           rotate: [0, 360],
         }}
         transition={{
-          duration: 80,
+          duration: isMobile ? 120 : 80,
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute w-[520px] h-[520px] rounded-full border border-[#c9a96e]/10 pointer-events-none"
+        className={`absolute ${
+          isMobile ? "w-[360px] h-[360px]" : "w-[520px] h-[520px]"
+        } rounded-full border border-[#c9a96e]/10 pointer-events-none`}
       />
       <motion.div
         animate={{
           rotate: [360, 0],
         }}
         transition={{
-          duration: 55,
+          duration: isMobile ? 100 : 55,
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute w-[360px] h-[360px] rounded-full border border-[#c9a96e]/[0.06] pointer-events-none"
+        className={`absolute ${
+          isMobile ? "w-[260px] h-[260px]" : "w-[360px] h-[360px]"
+        } rounded-full border border-[#c9a96e]/[0.06] pointer-events-none`}
       />
       <motion.div
         animate={{
-          scale: [1, 1.08, 1],
-          opacity: [0.3, 0.5, 0.3],
+          scale: isMobile ? [1, 1.04, 1] : [1, 1.08, 1],
+          opacity: isMobile ? [0.2, 0.35, 0.2] : [0.3, 0.5, 0.3],
         }}
         transition={{
-          duration: 10,
+          duration: isMobile ? 14 : 10,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute w-[280px] h-[280px] rounded-full bg-[#c9a96e]/10 blur-[110px]"
+        className={`absolute ${
+          isMobile
+            ? "w-[200px] h-[200px] blur-[70px]"
+            : "w-[280px] h-[280px] blur-[110px]"
+        } rounded-full bg-[#c9a96e]/10 pointer-events-none`}
       />
       <motion.div
         animate={{
-          opacity: [0.3, 0.8, 0.3],
-          scale: [0.8, 1.2, 0.8],
+          opacity: isMobile ? [0.3, 0.6, 0.3] : [0.3, 0.8, 0.3],
+          scale: isMobile ? [0.9, 1.05, 0.9] : [0.8, 1.2, 0.8],
         }}
         transition={{
-          duration: 3,
+          duration: 4,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -53,11 +76,11 @@ export default function StoryIntro() {
       />
       <motion.div
         animate={{
-          opacity: [0.3, 0.8, 0.3],
-          scale: [1.2, 0.8, 1.2],
+          opacity: isMobile ? [0.3, 0.6, 0.3] : [0.3, 0.8, 0.3],
+          scale: isMobile ? [1, 0.95, 1] : [1.2, 0.8, 1.2],
         }}
         transition={{
-          duration: 4,
+          duration: 5,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -77,7 +100,7 @@ export default function StoryIntro() {
           amount: 0.35,
         }}
         transition={{
-          duration: 1.3,
+          duration: isMobile ? 1 : 1.3,
           ease: [0.16, 1, 0.3, 1],
         }}
         className="relative z-10 max-w-2xl text-center"
@@ -95,18 +118,24 @@ export default function StoryIntro() {
             once: true,
           }}
           transition={{
-            duration: 1,
+            duration: 0.9,
             delay: 0.2,
           }}
           className="flex items-center justify-center gap-4 mb-10"
         >
           <span className="w-12 md:w-16 h-px bg-[#c9a96e]/40" />
           <motion.span
-            animate={{
-              rotate: [0, 180, 360],
-            }}
+            animate={
+              isMobile
+                ? {
+                    opacity: [0.6, 1, 0.6],
+                  }
+                : {
+                    rotate: [0, 180, 360],
+                  }
+            }
             transition={{
-              duration: 12,
+              duration: isMobile ? 3 : 12,
               repeat: Infinity,
               ease: "linear",
             }}
@@ -129,8 +158,8 @@ export default function StoryIntro() {
             once: true,
           }}
           transition={{
-            duration: 1,
-            delay: 0.4,
+            duration: 0.8,
+            delay: 0.35,
           }}
           className="text-sm tracking-[0.3em] text-[#9c7b42] mb-8"
         >
@@ -151,8 +180,8 @@ export default function StoryIntro() {
             once: true,
           }}
           transition={{
-            duration: 1.3,
-            delay: 0.6,
+            duration: isMobile ? 1 : 1.3,
+            delay: 0.5,
           }}
           className="text-4xl md:text-6xl font-serif leading-tight"
         >
@@ -173,8 +202,8 @@ export default function StoryIntro() {
             once: true,
           }}
           transition={{
-            duration: 1,
-            delay: 1,
+            duration: 0.8,
+            delay: 0.8,
           }}
           className="h-px bg-[#c9a96e] mx-auto my-10"
         />
@@ -191,8 +220,8 @@ export default function StoryIntro() {
             once: true,
           }}
           transition={{
-            duration: 1.1,
-            delay: 1.2,
+            duration: 0.9,
+            delay: 1,
           }}
           className="text-base md:text-lg leading-8 text-black/60"
         >
@@ -211,8 +240,8 @@ export default function StoryIntro() {
             once: true,
           }}
           transition={{
-            delay: 1.8,
-            duration: 1,
+            delay: isMobile ? 1.4 : 1.6,
+            duration: 0.8,
           }}
           className="mt-20"
         >
@@ -221,11 +250,11 @@ export default function StoryIntro() {
           </p>
           <motion.div
             animate={{
-              y: [0, 8, 0],
-              opacity: [0.3, 1, 0.3],
+              y: [0, 6, 0],
+              opacity: [0.35, 0.8, 0.35],
             }}
             transition={{
-              duration: 1.8,
+              duration: isMobile ? 2.4 : 1.8,
               repeat: Infinity,
               ease: "easeInOut",
             }}

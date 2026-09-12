@@ -1,46 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function MemorySection() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen bg-[#0b0b0a] text-[#f5f1e8] overflow-hidden flex items-center justify-center px-6 py-24">
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.08, 0.16, 0.08],
+            scale: isMobile ? [1, 1.04, 1] : [1, 1.15, 1],
+            opacity: isMobile ? [0.06, 0.11, 0.06] : [0.08, 0.16, 0.08],
           }}
           transition={{
-            duration: 10,
+            duration: isMobile ? 14 : 10,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-[#c9a96e] blur-[160px]"
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${
+            isMobile
+              ? "w-[280px] h-[280px] blur-[90px]"
+              : "w-[450px] h-[450px] blur-[160px]"
+          } rounded-full bg-[#c9a96e]`}
         />
         <motion.div
           animate={{
             rotate: [0, 360],
           }}
           transition={{
-            duration: 70,
+            duration: isMobile ? 110 : 70,
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] rounded-full border border-[#c9a96e]/10"
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${
+            isMobile ? "w-[450px] h-[450px]" : "w-[650px] h-[650px]"
+          } rounded-full border border-[#c9a96e]/10`}
         />
         <motion.div
           animate={{
             rotate: [360, 0],
           }}
           transition={{
-            duration: 45,
+            duration: isMobile ? 85 : 45,
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-[#c9a96e]/[0.05]"
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${
+            isMobile ? "w-[340px] h-[340px]" : "w-[500px] h-[500px]"
+          } rounded-full border border-[#c9a96e]/[0.05]`}
         />
-
       </div>
       <div className="relative z-10 w-full max-w-5xl mx-auto">
         <motion.div
@@ -57,19 +78,19 @@ export default function MemorySection() {
             amount: 0.3,
           }}
           transition={{
-            duration: 1.2,
+            duration: isMobile ? 0.9 : 1.2,
           }}
           className="text-center mb-14"
         >
           <p className="text-xs md:text-sm tracking-[0.3em] text-[#c9a96e] mb-6">
             එක් සුන්දර මතකයක්...
           </p>
+
           <h2 className="text-3xl md:text-5xl font-serif leading-tight">
             අපේ ගමනේ
             <br />
             තවත් එක් පියවරක්
           </h2>
-
         </motion.div>
         <motion.div
           initial={{
@@ -87,7 +108,7 @@ export default function MemorySection() {
             amount: 0.25,
           }}
           transition={{
-            duration: 1.4,
+            duration: isMobile ? 1 : 1.4,
             ease: [0.16, 1, 0.3, 1],
           }}
           className="relative max-w-3xl mx-auto"
@@ -96,23 +117,31 @@ export default function MemorySection() {
             <div className="relative aspect-[4/5] md:aspect-[4/3] bg-[#151411] overflow-hidden">
               <motion.div
                 animate={{
-                  scale: [1, 1.08, 1],
-                  opacity: [0.05, 0.12, 0.05],
+                  scale: isMobile ? [1, 1.03, 1] : [1, 1.08, 1],
+                  opacity: isMobile ? [0.04, 0.08, 0.04] : [0.05, 0.12, 0.05],
                 }}
                 transition={{
-                  duration: 8,
+                  duration: isMobile ? 12 : 8,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute inset-0 bg-[#c9a96e] blur-[100px]"
+                className={`absolute inset-0 ${
+                  isMobile ? "blur-[60px]" : "blur-[100px]"
+                } bg-[#c9a96e]`}
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
                 <motion.div
-                  animate={{
-                    rotate: [0, 180, 360],
-                  }}
+                  animate={
+                    isMobile
+                      ? {
+                          opacity: [0.4, 0.7, 0.4],
+                        }
+                      : {
+                          rotate: [0, 180, 360],
+                        }
+                  }
                   transition={{
-                    duration: 14,
+                    duration: isMobile ? 3 : 14,
                     repeat: Infinity,
                     ease: "linear",
                   }}
@@ -160,7 +189,7 @@ export default function MemorySection() {
             amount: 0.4,
           }}
           transition={{
-            duration: 1.2,
+            duration: isMobile ? 0.9 : 1.2,
             delay: 0.3,
           }}
           className="max-w-xl mx-auto text-center mt-12"
@@ -189,8 +218,8 @@ export default function MemorySection() {
             once: true,
           }}
           transition={{
-            delay: 1,
-            duration: 1,
+            delay: isMobile ? 1.2 : 1,
+            duration: 0.8,
           }}
           className="flex flex-col items-center mt-16"
         >
@@ -199,11 +228,11 @@ export default function MemorySection() {
           </p>
           <motion.div
             animate={{
-              y: [0, 8, 0],
-              opacity: [0.3, 1, 0.3],
+              y: [0, 6, 0],
+              opacity: [0.35, 0.8, 0.35],
             }}
             transition={{
-              duration: 1.8,
+              duration: isMobile ? 2.4 : 1.8,
               repeat: Infinity,
               ease: "easeInOut",
             }}
