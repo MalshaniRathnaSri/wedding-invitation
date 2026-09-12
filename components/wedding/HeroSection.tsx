@@ -1,15 +1,39 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function HeroSection() {
   const { scrollY } = useScroll();
+  const [isMobile, setIsMobile] = useState(false);
 
-  const backgroundScale = useTransform(scrollY, [0, 600], [1, 1.12]);
-  const contentY = useTransform(scrollY, [0, 500], [0, -120]);
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
+  const backgroundScale = useTransform(
+    scrollY,
+    [0, 600],
+    isMobile ? [1, 1.04] : [1, 1.12],
+  );
+  const contentY = useTransform(
+    scrollY,
+    [0, 500],
+    isMobile ? [0, -50] : [0, -120],
+  );
   const contentOpacity = useTransform(scrollY, [0, 380], [1, 0]);
-
-  const particles = Array.from({ length: 22 });
+  const particleCount = isMobile ? 8 : 22;
+  const particles = Array.from({ length: particleCount });
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090909] text-[#f5f1e8]">
@@ -18,57 +42,71 @@ export default function HeroSection() {
         className="absolute inset-0 pointer-events-none"
       >
         <motion.div
-          animate={{
-            scale: [1, 1.15, 0.95, 1],
-            opacity: [0.15, 0.25, 0.18, 0.15],
-          }}
+          animate={
+            isMobile
+              ? {
+                  opacity: [0.15, 0.2, 0.15],
+                }
+              : {
+                  scale: [1, 1.15, 0.95, 1],
+                  opacity: [0.15, 0.25, 0.18, 0.15],
+                }
+          }
           transition={{
             duration: 12,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full bg-[#c9a96e] blur-[150px]"
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a96e] ${
+            isMobile
+              ? "w-[300px] h-[300px] blur-[100px]"
+              : "w-[420px] h-[420px] blur-[150px]"
+          }`}
         />
-        <motion.div
-          animate={{
-            x: [0, 100, -50, 0],
-            y: [0, 60, -30, 0],
-            scale: [1, 1.2, 0.9, 1],
-            opacity: [0.08, 0.16, 0.1, 0.08],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute -top-20 -left-20 w-[350px] h-[350px] rounded-full bg-[#c9a96e] blur-[130px]"
-        />
-        <motion.div
-          animate={{
-            x: [0, -100, 50, 0],
-            y: [0, -60, 30, 0],
-            scale: [1, 0.9, 1.15, 1],
-            opacity: [0.06, 0.13, 0.08, 0.06],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute -bottom-32 -right-20 w-[400px] h-[400px] rounded-full bg-[#c9a96e] blur-[150px]"
-        />
-        <motion.div
-          animate={{
-            x: [0, 80, 0],
-            opacity: [0.03, 0.08, 0.03],
-          }}
-          transition={{
-            duration: 14,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-[35%] -right-40 w-[300px] h-[500px] rounded-full bg-[#e0bd7d] blur-[160px]"
-        />
+        {!isMobile && (
+          <>
+            <motion.div
+              animate={{
+                x: [0, 100, -50, 0],
+                y: [0, 60, -30, 0],
+                scale: [1, 1.2, 0.9, 1],
+                opacity: [0.08, 0.16, 0.1, 0.08],
+              }}
+              transition={{
+                duration: 18,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute -top-20 -left-20 w-[350px] h-[350px] rounded-full bg-[#c9a96e] blur-[130px]"
+            />
+            <motion.div
+              animate={{
+                x: [0, -100, 50, 0],
+                y: [0, -60, 30, 0],
+                scale: [1, 0.9, 1.15, 1],
+                opacity: [0.06, 0.13, 0.08, 0.06],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute -bottom-32 -right-20 w-[400px] h-[400px] rounded-full bg-[#c9a96e] blur-[150px]"
+            />
+            <motion.div
+              animate={{
+                x: [0, 80, 0],
+                opacity: [0.03, 0.08, 0.03],
+              }}
+              transition={{
+                duration: 14,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute top-[35%] -right-40 w-[300px] h-[500px] rounded-full bg-[#e0bd7d] blur-[160px]"
+            />
+          </>
+        )}
       </motion.div>
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {particles.map((_, index) => {
@@ -97,14 +135,14 @@ export default function HeroSection() {
               }}
               className={
                 isLarge
-                  ? "absolute rounded-full bg-[#c9a96e] blur-[5px]"
+                  ? "absolute rounded-full bg-[#c9a96e] blur-[4px]"
                   : "absolute rounded-full bg-[#c9a96e]"
               }
               style={{
                 left,
                 bottom,
-                width: isLarge ? "12px" : "3px",
-                height: isLarge ? "12px" : "3px",
+                width: isLarge ? "10px" : "3px",
+                height: isLarge ? "10px" : "3px",
               }}
             />
           );
@@ -115,42 +153,59 @@ export default function HeroSection() {
           opacity: 0,
           scale: 0.8,
         }}
-        animate={{
-          opacity: 0.12,
-          scale: [0.95, 1.05, 0.95],
-          rotate: [0, 5, 0],
-        }}
-        transition={{
-          opacity: {
-            duration: 2,
-            delay: 1,
-          },
-          scale: {
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-          },
-          rotate: {
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          },
-        }}
-        className="absolute w-[600px] h-[600px] rounded-full border border-[#c9a96e]/20 pointer-events-none"
+        animate={
+          isMobile
+            ? {
+                opacity: 0.1,
+                scale: 1,
+              }
+            : {
+                opacity: 0.12,
+                scale: [0.95, 1.05, 0.95],
+                rotate: [0, 5, 0],
+              }
+        }
+        transition={
+          isMobile
+            ? {
+                duration: 2,
+              }
+            : {
+                opacity: {
+                  duration: 2,
+                  delay: 1,
+                },
+                scale: {
+                  duration: 15,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+                rotate: {
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+              }
+        }
+        className={`absolute rounded-full border border-[#c9a96e]/20 pointer-events-none ${
+          isMobile ? "w-[400px] h-[400px]" : "w-[600px] h-[600px]"
+        }`}
       />
-      <motion.div
-        initial={{
-          opacity: 0,
-        }}
-        animate={{
-          opacity: 0.08,
-        }}
-        transition={{
-          duration: 3,
-          delay: 2,
-        }}
-        className="absolute w-[750px] h-[750px] rounded-full border border-[#c9a96e]/10 pointer-events-none"
-      />
+      {!isMobile && (
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 0.08,
+          }}
+          transition={{
+            duration: 3,
+            delay: 2,
+          }}
+          className="absolute w-[750px] h-[750px] rounded-full border border-[#c9a96e]/10 pointer-events-none"
+        />
+      )}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -299,18 +354,25 @@ export default function HeroSection() {
           className="relative mt-2"
         >
           <motion.div
-            animate={{
-              scale: [1, 1.25, 1],
-              opacity: [0.2, 0.4, 0.2],
-            }}
+            animate={
+              isMobile
+                ? {
+                    opacity: [0.2, 0.3, 0.2],
+                  }
+                : {
+                    scale: [1, 1.25, 1],
+                    opacity: [0.2, 0.4, 0.2],
+                  }
+            }
             transition={{
               duration: 4,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full bg-[#c9a96e] blur-[80px]"
+            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a96e] ${
+              isMobile ? "w-28 h-28 blur-[50px]" : "w-36 h-36 blur-[80px]"
+            }`}
           />
-
           <span className="relative text-[100px] md:text-[150px] leading-none font-serif text-[#c9a96e] tracking-tight">
             12
           </span>
