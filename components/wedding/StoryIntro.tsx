@@ -19,7 +19,7 @@ export default function StoryIntro() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-[#f5f1e8] text-[#171512] px-6 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-[#4a2c17] text-[#f1e3ce] px-6 overflow-hidden">
       <motion.div
         animate={{
           rotate: [0, 360],
@@ -31,7 +31,7 @@ export default function StoryIntro() {
         }}
         className={`absolute ${
           isMobile ? "w-[360px] h-[360px]" : "w-[520px] h-[520px]"
-        } rounded-full border border-[#c9a96e]/10 pointer-events-none`}
+        } rounded-full border border-[#b87924]/10 pointer-events-none`}
       />
       <motion.div
         animate={{
@@ -44,7 +44,7 @@ export default function StoryIntro() {
         }}
         className={`absolute ${
           isMobile ? "w-[260px] h-[260px]" : "w-[360px] h-[360px]"
-        } rounded-full border border-[#c9a96e]/[0.06] pointer-events-none`}
+        } rounded-full border border-[#b87924]/[0.06] pointer-events-none`}
       />
       <motion.div
         animate={{
@@ -60,7 +60,7 @@ export default function StoryIntro() {
           isMobile
             ? "w-[200px] h-[200px] blur-[70px]"
             : "w-[280px] h-[280px] blur-[110px]"
-        } rounded-full bg-[#c9a96e]/10 pointer-events-none`}
+        } rounded-full bg-[#b87924]/10 pointer-events-none`}
       />
       <motion.div
         animate={{
@@ -72,7 +72,7 @@ export default function StoryIntro() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-[20%] left-[18%] w-1.5 h-1.5 rounded-full bg-[#c9a96e]"
+        className="absolute top-[20%] left-[18%] w-1.5 h-1.5 rounded-full bg-[#b87924]"
       />
       <motion.div
         animate={{
@@ -84,7 +84,7 @@ export default function StoryIntro() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-[25%] right-[18%] w-1.5 h-1.5 rounded-full bg-[#c9a96e]"
+        className="absolute bottom-[25%] right-[18%] w-1.5 h-1.5 rounded-full bg-[#b87924]"
       />
       <motion.div
         initial={{
@@ -123,7 +123,7 @@ export default function StoryIntro() {
           }}
           className="flex items-center justify-center gap-4 mb-10"
         >
-          <span className="w-12 md:w-16 h-px bg-[#c9a96e]/40" />
+          <span className="w-12 md:w-16 h-px bg-[#b87924]/40" />
           <motion.span
             animate={
               isMobile
@@ -139,11 +139,11 @@ export default function StoryIntro() {
               repeat: Infinity,
               ease: "linear",
             }}
-            className="text-[#c9a96e] text-sm"
+            className="text-[#b87924] text-sm"
           >
             ✦
           </motion.span>
-          <span className="w-12 md:w-16 h-px bg-[#c9a96e]/40" />
+          <span className="w-12 md:w-16 h-px bg-[#b87924]/40" />
         </motion.div>
         <motion.p
           initial={{
@@ -161,7 +161,7 @@ export default function StoryIntro() {
             duration: 0.8,
             delay: 0.35,
           }}
-          className="text-sm tracking-[0.3em] text-[#9c7b42] mb-8"
+          className="text-sm tracking-[0.3em] text-[#8f5d1d] mb-8"
         >
           වසර දොළහක් පුරාවට...
         </motion.p>
@@ -205,7 +205,7 @@ export default function StoryIntro() {
             duration: 0.8,
             delay: 0.8,
           }}
-          className="h-px bg-[#c9a96e] mx-auto my-10"
+          className="h-px bg-[#b87924] mx-auto my-10"
         />
         <motion.p
           initial={{
@@ -258,7 +258,7 @@ export default function StoryIntro() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="text-[#9c7b42] text-xl"
+            className="text-[#8f5d1d] text-xl"
           >
             ↓
           </motion.div>

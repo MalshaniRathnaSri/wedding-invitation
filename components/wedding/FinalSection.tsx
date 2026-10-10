@@ -18,9 +18,9 @@ export default function FinalSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#090909] px-6 py-24 text-[#f5f1e8] md:px-12">
+    <section className="relative min-h-screen overflow-hidden bg-[#4a2c17] px-6 py-24 text-[#f1e3ce] md:px-12">
       <motion.div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a96e]/10 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b87924]/10 ${
           isMobile ? "h-56 w-56 blur-[70px]" : "h-96 w-96 blur-3xl"
         }`}
         animate={{
@@ -34,7 +34,7 @@ export default function FinalSection() {
         }}
       />
       <motion.div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#c9a96e]/10 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#b87924]/10 ${
           isMobile ? "h-[300px] w-[300px]" : "h-[500px] w-[500px]"
         }`}
         animate={{ rotate: 360 }}
@@ -45,7 +45,7 @@ export default function FinalSection() {
         }}
       />
       <motion.div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#c9a96e]/10 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#b87924]/10 ${
           isMobile ? "h-[220px] w-[220px]" : "h-[360px] w-[360px]"
         }`}
         animate={{ rotate: -360 }}
@@ -64,7 +64,7 @@ export default function FinalSection() {
           transition={{
             duration: isMobile ? 0.7 : 0.9,
           }}
-          className="mb-10 text-xs tracking-[0.4em] text-[#c9a96e]"
+          className="mb-10 text-xs tracking-[0.4em] text-[#b87924]"
         >
           අපේ කතාව
         </motion.p>
@@ -97,7 +97,7 @@ export default function FinalSection() {
             duration: isMobile ? 0.8 : 1,
             delay: isMobile ? 0.3 : 0.4,
           }}
-          className="my-12 h-px bg-[#c9a96e]"
+          className="my-12 h-px bg-[#b87924]"
         />
         <motion.div
           initial={{
@@ -114,7 +114,7 @@ export default function FinalSection() {
             delay: isMobile ? 0.4 : 0.5,
           }}
         >
-          <p className="text-lg tracking-[0.25em] text-[#c9a96e] md:text-xl">
+          <p className="text-lg tracking-[0.25em] text-[#b87924] md:text-xl">
             දැන්...
           </p>
           <h2 className="mt-5 text-4xl font-light leading-tight md:text-6xl">
@@ -135,11 +135,11 @@ export default function FinalSection() {
         >
           <p className="text-3xl font-light md:text-5xl">
             නිපුනි
-            <span className="mx-4 text-[#c9a96e]">&</span>
+            <span className="mx-4 text-[#b87924]">&</span>
             නිපුන
           </p>
-          <div className="mx-auto mt-7 h-px w-12 bg-[#c9a96e]/60" />
-          <p className="mt-6 text-sm tracking-[0.35em] text-[#c9a96e]">
+          <div className="mx-auto mt-7 h-px w-12 bg-[#b87924]/60" />
+          <p className="mt-6 text-sm tracking-[0.35em] text-[#b87924]">
             15 · 01 · 2027
           </p>
         </motion.div>
@@ -173,8 +173,8 @@ export default function FinalSection() {
           }}
           className="mt-20"
         >
-          <div className="mx-auto mb-5 h-8 w-px bg-[#c9a96e]/50" />
-          <p className="text-[10px] tracking-[0.5em] text-[#c9a96e]">
+          <div className="mx-auto mb-5 h-8 w-px bg-[#b87924]/50" />
+          <p className="text-[10px] tracking-[0.5em] text-[#b87924]">
             WITH LOVE
           </p>
           <p className="mt-3 text-xs tracking-[0.3em] text-[#77736c]">

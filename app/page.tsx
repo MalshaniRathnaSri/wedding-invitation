@@ -14,7 +14,7 @@ import MusicPlayer from "@/components/wedding/MusicPlayer";
 export default function Home() {
   return (
       <>
-        <main className="bg-[#090909] text-[#f5f1e8] overflow-hidden">
+        <main className="bg-[#f1e3ce] text-[#4a2c17] overflow-hidden">
           <HeroSection />
           <StoryIntro />
           <MemorySection />

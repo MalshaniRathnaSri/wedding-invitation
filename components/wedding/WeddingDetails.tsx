@@ -19,9 +19,9 @@ export default function WeddingDetails() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#f5f1e8] px-6 py-24 text-[#171512] md:px-12">
+    <section className="relative min-h-screen overflow-hidden bg-[#f1e3ce] px-6 py-24 text-[#4a2c17] md:px-12">
       <motion.div
-        className={`absolute left-1/2 top-20 -translate-x-1/2 rounded-full bg-[#c9a96e]/10 ${
+        className={`absolute left-1/2 top-20 -translate-x-1/2 rounded-full bg-[#b87924]/10 ${
           isMobile ? "h-52 w-52 blur-[70px]" : "h-72 w-72 blur-3xl"
         }`}
         animate={{
@@ -35,7 +35,7 @@ export default function WeddingDetails() {
         }}
       />
       <motion.div
-        className={`absolute -right-32 top-20 rounded-full border border-[#c9a96e]/20 ${
+        className={`absolute -right-32 top-20 rounded-full border border-[#b87924]/20 ${
           isMobile ? "h-52 w-52" : "h-72 w-72"
         }`}
         animate={{ rotate: 360 }}
@@ -46,7 +46,7 @@ export default function WeddingDetails() {
         }}
       />
       <motion.div
-        className={`absolute -left-32 bottom-20 rounded-full border border-[#c9a96e]/15 ${
+        className={`absolute -left-32 bottom-20 rounded-full border border-[#b87924]/15 ${
           isMobile ? "h-52 w-52" : "h-64 w-64"
         }`}
         animate={{ rotate: -360 }}
@@ -64,7 +64,7 @@ export default function WeddingDetails() {
           transition={{
             duration: isMobile ? 0.6 : 0.8,
           }}
-          className="mb-4 text-center text-xs tracking-[0.35em] text-[#9b7a45]"
+          className="mb-4 text-center text-xs tracking-[0.35em] text-[#8f5d1d]"
         >
           අපේ විශේෂ දවස
         </motion.p>
@@ -88,7 +88,7 @@ export default function WeddingDetails() {
             duration: isMobile ? 0.6 : 0.8,
             delay: 0.3,
           }}
-          className="my-8 h-px bg-[#c9a96e]"
+          className="my-8 h-px bg-[#b87924]"
         />
         <motion.div
           initial={{ opacity: 0, y: isMobile ? 15 : 20 }}
@@ -124,7 +124,7 @@ export default function WeddingDetails() {
           }}
           className="mt-16 text-center"
         >
-          <p className="text-sm tracking-[0.3em] text-[#9b7a45]">ජනවාරි</p>
+          <p className="text-sm tracking-[0.3em] text-[#8f5d1d]">ජනවාරි</p>
           <div className="my-2 text-7xl font-light tracking-tight md:text-8xl">
             15
           </div>
@@ -139,9 +139,9 @@ export default function WeddingDetails() {
               duration: isMobile ? 0.7 : 0.8,
               delay: 0.1,
             }}
-            className="border border-[#c9a96e]/40 bg-[#eee8dc]/60 px-6 py-8 text-center backdrop-blur-sm"
+            className="border border-[#b87924]/40 bg-[#eee8dc]/60 px-6 py-8 text-center backdrop-blur-sm"
           >
-            <p className="mb-3 text-sm tracking-wide text-[#9b7a45]">
+            <p className="mb-3 text-sm tracking-wide text-[#8f5d1d]">
               පෝරුවේ චාරිත්‍රය
             </p>
             <p className="text-2xl font-light">පෙ.ව. 9.05</p>
@@ -154,9 +154,9 @@ export default function WeddingDetails() {
               duration: isMobile ? 0.7 : 0.8,
               delay: 0.2,
             }}
-            className="border border-[#c9a96e]/40 bg-[#eee8dc]/60 px-6 py-8 text-center backdrop-blur-sm"
+            className="border border-[#b87924]/40 bg-[#eee8dc]/60 px-6 py-8 text-center backdrop-blur-sm"
           >
-            <p className="mb-3 text-sm tracking-wide text-[#9b7a45]">
+            <p className="mb-3 text-sm tracking-wide text-[#8f5d1d]">
               විවාහ මංගල්‍යය
             </p>
             <p className="text-2xl font-light">නිපුනි & නිපුන</p>
@@ -169,9 +169,9 @@ export default function WeddingDetails() {
               duration: isMobile ? 0.7 : 0.8,
               delay: 0.3,
             }}
-            className="border border-[#c9a96e]/40 bg-[#eee8dc]/60 px-6 py-8 text-center backdrop-blur-sm"
+            className="border border-[#b87924]/40 bg-[#eee8dc]/60 px-6 py-8 text-center backdrop-blur-sm"
           >
-            <p className="mb-3 text-sm tracking-wide text-[#9b7a45]">ස්ථානය</p>
+            <p className="mb-3 text-sm tracking-wide text-[#8f5d1d]">ස්ථානය</p>
             <p className="text-2xl font-light">Season</p>
             <p className="mt-1 text-sm text-[#6b655d]">Waskaduwa</p>
           </motion.div>
@@ -186,7 +186,7 @@ export default function WeddingDetails() {
           }}
           className="mt-14 w-full max-w-4xl"
         >
-          <div className="relative flex min-h-[240px] flex-col items-center justify-center overflow-hidden border border-[#c9a96e]/30 bg-[#e8e1d4]">
+          <div className="relative flex min-h-[240px] flex-col items-center justify-center overflow-hidden border border-[#b87924]/30 bg-[#e8e1d4]">
             <div className="absolute inset-0 opacity-30">
               <div className="absolute left-0 top-1/3 h-px w-full rotate-6 bg-[#9b7a45]" />
               <div className="absolute left-0 top-2/3 h-px w-full -rotate-3 bg-[#9b7a45]" />
@@ -194,7 +194,7 @@ export default function WeddingDetails() {
               <div className="absolute right-1/3 top-0 h-full w-px -rotate-6 bg-[#9b7a45]" />
             </div>
             <div className="relative z-10 text-center">
-              <p className="text-xs tracking-[0.35em] text-[#9b7a45]">
+              <p className="text-xs tracking-[0.35em] text-[#8f5d1d]">
                 LOCATION
               </p>
               <h3 className="mt-3 text-3xl font-light">Season, Waskaduwa</h3>
@@ -202,7 +202,7 @@ export default function WeddingDetails() {
                 href="https://maps.app.goo.gl/AJXDZgSiGqDuFcp2A"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 inline-block border border-[#9b7a45] px-7 py-3 text-sm tracking-widest text-[#6b5738] transition-all duration-300 hover:bg-[#9b7a45] hover:text-white"
+                className="mt-8 inline-block border border-[#b87924] px-7 py-3 text-sm tracking-widest text-[#6b451c] transition-all duration-300 hover:bg-[#9b7a45] hover:text-white"
               >
                 ස්ථානය බලන්න
               </a>
@@ -222,7 +222,7 @@ export default function WeddingDetails() {
           <p className="text-lg text-[#4b463f] md:text-xl">
             ඔබගේ පැමිණීම අපට සතුටකි.
           </p>
-          <div className="mt-10 flex flex-col items-center gap-3 text-[#9b7a45]">
+          <div className="mt-10 flex flex-col items-center gap-3 text-[#8f5d1d]">
             <span className="text-xs tracking-[0.3em]">අපේ ගමන සමඟින්</span>
             <motion.span
               animate={{

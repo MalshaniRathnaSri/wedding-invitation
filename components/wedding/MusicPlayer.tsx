@@ -84,7 +84,7 @@ export default function MusicPlayer() {
         aria-label={isPlaying ? "Pause music" : "Play music"}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.92 }}
-        className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-[#c9a96e]/60 bg-[#090909]/90 text-[#c9a96e] shadow-lg backdrop-blur-md"
+        className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-[#b87924]/60 bg-[#4a2c17]/90 text-[#b87924] shadow-lg backdrop-blur-md"
       >
         {isPlaying ? (
           <span className="text-lg">♫</span>
@@ -94,7 +94,7 @@ export default function MusicPlayer() {
 
         {isPlaying && (
           <motion.span
-            className="absolute inset-0 rounded-full border border-[#c9a96e]/30"
+            className="absolute inset-0 rounded-full border border-[#b87924]/30"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.8, 0, 0.8],

@@ -78,9 +78,9 @@ export default function CountdownSection() {
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#090909] px-6 py-24 text-[#f5f1e8] md:px-12">
+    <section className="relative min-h-screen overflow-hidden bg-[#4a2c17] px-6 py-24 text-[#f1e3ce] md:px-12">
       <motion.div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a96e]/10 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b87924]/10 ${
           isMobile ? "h-56 w-56 blur-[70px]" : "h-96 w-96 blur-3xl"
         }`}
         animate={{
@@ -94,7 +94,7 @@ export default function CountdownSection() {
         }}
       />
       <motion.div
-        className={`absolute -left-40 top-20 rounded-full border border-[#c9a96e]/15 ${
+        className={`absolute -left-40 top-20 rounded-full border border-[#b87924]/15 ${
           isMobile ? "h-56 w-56" : "h-80 w-80"
         }`}
         animate={{
@@ -107,7 +107,7 @@ export default function CountdownSection() {
         }}
       />
       <motion.div
-        className={`absolute -right-40 bottom-20 rounded-full border border-[#c9a96e]/15 ${
+        className={`absolute -right-40 bottom-20 rounded-full border border-[#b87924]/15 ${
           isMobile ? "h-56 w-56" : "h-80 w-80"
         }`}
         animate={{
@@ -128,7 +128,7 @@ export default function CountdownSection() {
           transition={{
             duration: isMobile ? 0.6 : 0.8,
           }}
-          className="mb-6 text-xs tracking-[0.35em] text-[#c9a96e]"
+          className="mb-6 text-xs tracking-[0.35em] text-[#b87924]"
         >
           අපේ විශේෂ දවසට
         </motion.p>
@@ -159,7 +159,7 @@ export default function CountdownSection() {
           }}
           className="mt-10"
         >
-          <p className="text-6xl font-light tracking-widest text-[#c9a96e] md:text-8xl">
+          <p className="text-6xl font-light tracking-widest text-[#b87924] md:text-8xl">
             15
           </p>
 
@@ -175,7 +175,7 @@ export default function CountdownSection() {
             duration: isMobile ? 0.6 : 0.8,
             delay: 0.4,
           }}
-          className="my-12 h-px bg-[#c9a96e]"
+          className="my-12 h-px bg-[#b87924]"
         />
         <motion.div
           initial={{ opacity: 0, y: isMobile ? 18 : 25 }}
@@ -203,13 +203,13 @@ export default function CountdownSection() {
                 duration: isMobile ? 0.5 : 0.6,
                 delay: 0.6 + index * 0.1,
               }}
-              className="border border-[#c9a96e]/20 bg-[#11110f]/60 px-4 py-7 backdrop-blur-sm"
+              className="border border-[#b87924]/20 bg-[#11110f]/60 px-4 py-7 backdrop-blur-sm"
             >
-              <p className="text-3xl font-light text-[#f5f1e8] md:text-4xl">
+              <p className="text-3xl font-light text-[#f1e3ce] md:text-4xl">
                 {String(item.value).padStart(2, "0")}
               </p>
 
-              <p className="mt-3 text-xs tracking-[0.2em] text-[#c9a96e]">
+              <p className="mt-3 text-xs tracking-[0.2em] text-[#b87924]">
                 {item.label}
               </p>
             </motion.div>
@@ -230,7 +230,7 @@ export default function CountdownSection() {
             <br />
             සදාකාලික බැඳීමකට...
           </p>
-          <p className="mt-6 text-sm tracking-[0.3em] text-[#c9a96e]">
+          <p className="mt-6 text-sm tracking-[0.3em] text-[#b87924]">
             නිපුනි & නිපුන
           </p>
         </motion.div>
@@ -242,7 +242,7 @@ export default function CountdownSection() {
             duration: isMobile ? 0.8 : 1,
             delay: 1,
           }}
-          className="mt-16 flex flex-col items-center gap-3 text-[#c9a96e]"
+          className="mt-16 flex flex-col items-center gap-3 text-[#b87924]"
         >
           <span className="text-xs tracking-[0.3em]">ආදරයෙන් ඇරයුම්</span>
           <motion.span

@@ -18,13 +18,13 @@ export default function PreShootSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-[#f5f1e8] text-[#171512] overflow-hidden py-24 md:py-32">
+    <section className="relative min-h-screen bg-[#4a2c17] text-[#f1e3ce] overflow-hidden py-24 md:py-32">
       <motion.div
         className={`absolute top-20 left-1/2 -translate-x-1/2 ${
           isMobile
             ? "w-[300px] h-[300px] blur-[75px]"
             : "w-[500px] h-[500px] blur-[120px]"
-        } rounded-full bg-[#c9a96e]/10 pointer-events-none`}
+        } rounded-full bg-[#b87924]/10 pointer-events-none`}
         animate={{
           scale: isMobile ? [1, 1.04, 1] : [1, 1.15, 1],
           opacity: isMobile ? [0.3, 0.45, 0.3] : [0.4, 0.7, 0.4],
@@ -38,7 +38,7 @@ export default function PreShootSection() {
       <motion.div
         className={`absolute -right-32 top-32 ${
           isMobile ? "w-[260px] h-[260px]" : "w-[350px] h-[350px]"
-        } border border-[#c9a96e]/30 rounded-full pointer-events-none`}
+        } border border-[#b87924]/30 rounded-full pointer-events-none`}
         animate={{
           rotate: 360,
         }}
@@ -51,7 +51,7 @@ export default function PreShootSection() {
       <motion.div
         className={`absolute -right-20 top-44 ${
           isMobile ? "w-[170px] h-[170px]" : "w-[220px] h-[220px]"
-        } border border-[#c9a96e]/20 rounded-full pointer-events-none`}
+        } border border-[#b87924]/20 rounded-full pointer-events-none`}
         animate={{
           rotate: -360,
         }}
@@ -81,13 +81,13 @@ export default function PreShootSection() {
           }}
           className="mb-16 md:mb-24"
         >
-          <p className="text-xs md:text-sm tracking-[0.35em] text-[#9c7b42] mb-5">
+          <p className="text-xs md:text-sm tracking-[0.35em] text-[#8f5d1d] mb-5">
             අපේ මතකයන්
           </p>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.15]">
             අපි දෙන්නාගේ
             <br />
-            <span className="text-[#9c7b42]">සුන්දරම මතකයන්...</span>
+            <span className="text-[#8f5d1d]">සුන්දරම මතකයන්...</span>
           </h2>
         </motion.div>
         <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
@@ -110,7 +110,7 @@ export default function PreShootSection() {
             className="md:col-span-7"
           >
             <div className="relative">
-              <div className="absolute -top-4 -left-4 w-full h-full border border-[#c9a96e]/50" />
+              <div className="absolute -top-4 -left-4 w-full h-full border border-[#b87924]/50" />
               <div className="relative aspect-[4/5] md:aspect-[4/3] bg-[#ded8cb] overflow-hidden">
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-[#6e6659]">
                   <motion.div
@@ -130,7 +130,7 @@ export default function PreShootSection() {
                       ease: "easeInOut",
                     }}
                   >
-                    <span className="text-2xl text-[#9c7b42]">♡</span>
+                    <span className="text-2xl text-[#8f5d1d]">♡</span>
                   </motion.div>
                   <p className="text-xs tracking-[0.35em]">PRE-SHOOT</p>
                   <p className="text-sm mt-3">අපේ සුන්දර මතකය</p>
@@ -160,15 +160,15 @@ export default function PreShootSection() {
             }}
             className="md:col-span-5"
           >
-            <p className="text-[#9c7b42] text-xs tracking-[0.3em] mb-6">
+            <p className="text-[#8f5d1d] text-xs tracking-[0.3em] mb-6">
               TWO HEARTS
             </p>
             <h3 className="text-3xl md:text-4xl leading-tight font-serif mb-8">
               එකට ගෙවූ
               <br />
-              <span className="text-[#9c7b42]">සොඳුරු මොහොතක්...</span>
+              <span className="text-[#8f5d1d]">සොඳුරු මොහොතක්...</span>
             </h3>
-            <div className="w-12 h-px bg-[#c9a96e] mb-8" />
+            <div className="w-12 h-px bg-[#b87924] mb-8" />
             <p className="text-[#5f594f] leading-8 text-sm md:text-base">
               වසර දොළහක් පුරාවට එකතු වූ මතකයන් අතරින්...
               <br />
@@ -198,9 +198,9 @@ export default function PreShootSection() {
           className="mt-28 md:mt-36 text-center"
         >
           <div className="flex items-center justify-center gap-5 mb-7">
-            <div className="w-16 h-px bg-[#c9a96e]/50" />
-            <span className="text-[#9c7b42] text-lg">✦</span>
-            <div className="w-16 h-px bg-[#c9a96e]/50" />
+            <div className="w-16 h-px bg-[#b87924]/50" />
+            <span className="text-[#8f5d1d] text-lg">✦</span>
+            <div className="w-16 h-px bg-[#b87924]/50" />
           </div>
           <p className="font-serif text-2xl md:text-3xl">මතකයන්...</p>
           <p className="mt-3 text-[#777064] text-sm tracking-wide">
@@ -223,7 +223,7 @@ export default function PreShootSection() {
           }}
           className="flex flex-col items-center mt-24"
         >
-          <span className="text-[10px] tracking-[0.35em] text-[#9c7b42]">
+          <span className="text-[10px] tracking-[0.35em] text-[#8f5d1d]">
             ඉදිරියට...
           </span>
           <motion.div
@@ -235,7 +235,7 @@ export default function PreShootSection() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="mt-4 text-[#9c7b42] text-xl"
+            className="mt-4 text-[#8f5d1d] text-xl"
           >
             ↓
           </motion.div>

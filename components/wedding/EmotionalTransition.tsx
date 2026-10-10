@@ -18,13 +18,13 @@ export default function EmotionalTransition() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-[#090909] text-[#f5f1e8] overflow-hidden flex items-center justify-center">
+    <section className="relative min-h-screen bg-[#f1e3ce] text-[#4a2c17] overflow-hidden flex items-center justify-center">
       <motion.div
         className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${
           isMobile
             ? "w-[280px] h-[280px] blur-[80px]"
             : "w-[450px] h-[450px] blur-[130px]"
-        } rounded-full bg-[#c9a96e]/10 pointer-events-none`}
+        } rounded-full bg-[#b87924]/10 pointer-events-none`}
         animate={{
           scale: isMobile ? [1, 1.04, 1] : [1, 1.15, 1],
           opacity: isMobile ? [0.2, 0.35, 0.2] : [0.3, 0.55, 0.3],
@@ -40,7 +40,7 @@ export default function EmotionalTransition() {
           isMobile
             ? "w-[400px] h-[400px]"
             : "w-[420px] h-[420px] md:w-[650px] md:h-[650px]"
-        } rounded-full border border-[#c9a96e]/10 pointer-events-none`}
+        } rounded-full border border-[#b87924]/10 pointer-events-none`}
         animate={{
           rotate: 360,
         }}
@@ -55,7 +55,7 @@ export default function EmotionalTransition() {
           isMobile
             ? "w-[280px] h-[280px]"
             : "w-[300px] h-[300px] md:w-[480px] md:h-[480px]"
-        } rounded-full border border-[#c9a96e]/10 pointer-events-none`}
+        } rounded-full border border-[#b87924]/10 pointer-events-none`}
         animate={{
           rotate: -360,
         }}
@@ -65,10 +65,10 @@ export default function EmotionalTransition() {
           ease: "linear",
         }}
       />
-      <div className="absolute top-[20%] left-[15%] w-1 h-1 bg-[#c9a96e] rounded-full" />
-      <div className="absolute top-[30%] right-[18%] w-1.5 h-1.5 bg-[#c9a96e]/70 rounded-full" />
-      <div className="absolute bottom-[25%] left-[20%] w-1 h-1 bg-[#c9a96e]/60 rounded-full" />
-      <div className="absolute bottom-[18%] right-[15%] w-1 h-1 bg-[#c9a96e] rounded-full" />
+      <div className="absolute top-[20%] left-[15%] w-1 h-1 bg-[#b87924] rounded-full" />
+      <div className="absolute top-[30%] right-[18%] w-1.5 h-1.5 bg-[#b87924]/70 rounded-full" />
+      <div className="absolute bottom-[25%] left-[20%] w-1 h-1 bg-[#b87924]/60 rounded-full" />
+      <div className="absolute bottom-[18%] right-[15%] w-1 h-1 bg-[#b87924] rounded-full" />
       <div className="relative z-10 max-w-4xl px-6 text-center">
         <motion.p
           initial={{
@@ -85,7 +85,7 @@ export default function EmotionalTransition() {
           transition={{
             duration: isMobile ? 0.8 : 1,
           }}
-          className="text-xs md:text-sm tracking-[0.4em] text-[#c9a96e] mb-12"
+          className="text-xs md:text-sm tracking-[0.4em] text-[#b87924] mb-12"
         >
           වසර දොළහක් පුරාවට...
         </motion.p>
@@ -108,7 +108,7 @@ export default function EmotionalTransition() {
         >
           <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.6]">
             <span className="block">අපි එකිනෙකා තෝරාගත්තෙමු.</span>
-            <span className="block mt-3 text-[#c9a96e]">නැවතත්...</span>
+            <span className="block mt-3 text-[#b87924]">නැවතත්...</span>
           </h2>
         </motion.div>
         <motion.div
@@ -127,7 +127,7 @@ export default function EmotionalTransition() {
             duration: 0.8,
             delay: 0.7,
           }}
-          className="h-px bg-[#c9a96e] mx-auto my-12"
+          className="h-px bg-[#b87924] mx-auto my-12"
         />
         <motion.div
           initial={{
@@ -149,13 +149,13 @@ export default function EmotionalTransition() {
           <p className="font-serif text-2xl md:text-4xl leading-relaxed">
             දැන්...
           </p>
-          <p className="mt-4 text-xl md:text-3xl leading-relaxed text-[#f5f1e8]/90">
+          <p className="mt-4 text-xl md:text-3xl leading-relaxed text-[#4a2c17]/90">
             සදාකාලිකව
             <br />
             එකට යන්නට
           </p>
 
-          <p className="mt-5 text-2xl md:text-4xl font-serif text-[#c9a96e]">
+          <p className="mt-5 text-2xl md:text-4xl font-serif text-[#b87924]">
             අපි සූදානම්.
           </p>
         </motion.div>
@@ -175,9 +175,9 @@ export default function EmotionalTransition() {
           }}
           className="mt-16"
         >
-          <p className="text-sm tracking-[0.35em] text-[#f5f1e8]/50">
+          <p className="text-sm tracking-[0.35em] text-[#4a2c17]/50">
             නිපුනි
-            <span className="mx-4 text-[#c9a96e]">&</span>
+            <span className="mx-4 text-[#b87924]">&</span>
             නිපුන
           </p>
         </motion.div>
@@ -198,7 +198,7 @@ export default function EmotionalTransition() {
         }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
       >
-        <span className="text-[10px] tracking-[0.35em] text-[#c9a96e]">
+        <span className="text-[10px] tracking-[0.35em] text-[#b87924]">
           අපේ විවාහය
         </span>
         <motion.div
@@ -210,7 +210,7 @@ export default function EmotionalTransition() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="mt-4 text-[#c9a96e] text-xl"
+          className="mt-4 text-[#b87924] text-xl"
         >
           ↓
         </motion.div>

@@ -18,9 +18,9 @@ export default function ParentsSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#0b0b0a] px-6 py-24 text-[#f5f1e8] md:px-12">
+    <section className="relative min-h-screen overflow-hidden bg-[#4a2c17] px-6 py-24 text-[#f1e3ce] md:px-12">
       <motion.div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a96e]/10 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b87924]/10 ${
           isMobile ? "h-56 w-56 blur-[70px]" : "h-80 w-80 blur-3xl"
         }`}
         animate={{
@@ -34,7 +34,7 @@ export default function ParentsSection() {
         }}
       />
       <motion.div
-        className={`absolute -right-28 top-24 rounded-full border border-[#c9a96e]/20 ${
+        className={`absolute -right-28 top-24 rounded-full border border-[#b87924]/20 ${
           isMobile ? "h-52 w-52" : "h-64 w-64"
         }`}
         animate={{
@@ -47,7 +47,7 @@ export default function ParentsSection() {
         }}
       />
       <motion.div
-        className={`absolute -left-28 bottom-24 rounded-full border border-[#c9a96e]/15 ${
+        className={`absolute -left-28 bottom-24 rounded-full border border-[#b87924]/15 ${
           isMobile ? "h-52 w-52" : "h-64 w-64"
         }`}
         animate={{
@@ -67,7 +67,7 @@ export default function ParentsSection() {
           transition={{
             duration: isMobile ? 0.6 : 0.8,
           }}
-          className="mb-5 text-center text-xs tracking-[0.35em] text-[#c9a96e]"
+          className="mb-5 text-center text-xs tracking-[0.35em] text-[#b87924]"
         >
           ආදරයෙන් ඇරයුම්
         </motion.p>
@@ -91,7 +91,7 @@ export default function ParentsSection() {
             duration: isMobile ? 0.6 : 0.8,
             delay: 0.3,
           }}
-          className="my-10 h-px bg-[#c9a96e]"
+          className="my-10 h-px bg-[#b87924]"
         />
         <div className="grid w-full max-w-3xl gap-12 md:grid-cols-2 md:gap-20">
           <motion.div
@@ -104,7 +104,7 @@ export default function ParentsSection() {
             }}
             className="text-center"
           >
-            <p className="mb-6 text-sm tracking-[0.15em] text-[#c9a96e]">
+            <p className="mb-6 text-sm tracking-[0.15em] text-[#b87924]">
               මනාලියගේ දෙමාපියන්
             </p>
 
@@ -128,7 +128,7 @@ export default function ParentsSection() {
             }}
             className="text-center"
           >
-            <p className="mb-6 text-sm tracking-[0.15em] text-[#c9a96e]">
+            <p className="mb-6 text-sm tracking-[0.15em] text-[#b87924]">
               මනාලයාගේ දෙමාපියන්
             </p>
             <div className="space-y-3">
@@ -147,7 +147,7 @@ export default function ParentsSection() {
           }}
           className="mt-16 max-w-2xl text-center"
         >
-          <div className="mx-auto mb-8 h-px w-12 bg-[#c9a96e]/60" />
+          <div className="mx-auto mb-8 h-px w-12 bg-[#b87924]/60" />
           <p className="text-lg leading-loose text-[#d7d0c3] md:text-xl">
             තම ආදරණීය දූ පුතුන්ගේ
             <br />
@@ -164,7 +164,7 @@ export default function ParentsSection() {
             duration: isMobile ? 0.8 : 1,
             delay: 0.7,
           }}
-          className="mt-14 flex flex-col items-center gap-3 text-[#c9a96e]"
+          className="mt-14 flex flex-col items-center gap-3 text-[#b87924]"
         >
           <span className="text-xs tracking-[0.3em]">අපේ විශේෂ දවස</span>
           <motion.span

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -13,7 +14,6 @@ export default function HeroSection() {
     };
 
     checkMobile();
-
     window.addEventListener("resize", checkMobile);
 
     return () => {
@@ -24,19 +24,22 @@ export default function HeroSection() {
   const backgroundScale = useTransform(
     scrollY,
     [0, 600],
-    isMobile ? [1, 1.04] : [1, 1.12],
+    isMobile ? [1, 1.04] : [1, 1.12]
   );
+
   const contentY = useTransform(
     scrollY,
     [0, 500],
-    isMobile ? [0, -50] : [0, -120],
+    isMobile ? [0, -50] : [0, -120]
   );
+
   const contentOpacity = useTransform(scrollY, [0, 380], [1, 0]);
   const particleCount = isMobile ? 8 : 22;
   const particles = Array.from({ length: particleCount });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090909] text-[#f5f1e8]">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#f1e3ce] text-[#4a2c17]">
+      {/* Background gold glow */}
       <motion.div
         style={{ scale: backgroundScale }}
         className="absolute inset-0 pointer-events-none"
@@ -45,11 +48,11 @@ export default function HeroSection() {
           animate={
             isMobile
               ? {
-                  opacity: [0.15, 0.2, 0.15],
+                  opacity: [0.12, 0.18, 0.12],
                 }
               : {
                   scale: [1, 1.15, 0.95, 1],
-                  opacity: [0.15, 0.25, 0.18, 0.15],
+                  opacity: [0.12, 0.2, 0.14, 0.12],
                 }
           }
           transition={{
@@ -57,12 +60,13 @@ export default function HeroSection() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a96e] ${
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b87924] ${
             isMobile
               ? "w-[300px] h-[300px] blur-[100px]"
               : "w-[420px] h-[420px] blur-[150px]"
           }`}
         />
+
         {!isMobile && (
           <>
             <motion.div
@@ -70,49 +74,54 @@ export default function HeroSection() {
                 x: [0, 100, -50, 0],
                 y: [0, 60, -30, 0],
                 scale: [1, 1.2, 0.9, 1],
-                opacity: [0.08, 0.16, 0.1, 0.08],
+                opacity: [0.06, 0.12, 0.08, 0.06],
               }}
               transition={{
                 duration: 18,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute -top-20 -left-20 w-[350px] h-[350px] rounded-full bg-[#c9a96e] blur-[130px]"
+              className="absolute -top-20 -left-20 w-[350px] h-[350px] rounded-full bg-[#b87924] blur-[130px]"
             />
+
             <motion.div
               animate={{
                 x: [0, -100, 50, 0],
                 y: [0, -60, 30, 0],
                 scale: [1, 0.9, 1.15, 1],
-                opacity: [0.06, 0.13, 0.08, 0.06],
+                opacity: [0.05, 0.1, 0.06, 0.05],
               }}
               transition={{
                 duration: 20,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute -bottom-32 -right-20 w-[400px] h-[400px] rounded-full bg-[#c9a96e] blur-[150px]"
+              className="absolute -bottom-32 -right-20 w-[400px] h-[400px] rounded-full bg-[#b87924] blur-[150px]"
             />
+
             <motion.div
               animate={{
                 x: [0, 80, 0],
-                opacity: [0.03, 0.08, 0.03],
+                opacity: [0.03, 0.07, 0.03],
               }}
               transition={{
                 duration: 14,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute top-[35%] -right-40 w-[300px] h-[500px] rounded-full bg-[#e0bd7d] blur-[160px]"
+              className="absolute top-[35%] -right-40 w-[300px] h-[500px] rounded-full bg-[#d6aa58] blur-[160px]"
             />
           </>
         )}
       </motion.div>
+
+      {/* Floating gold particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {particles.map((_, index) => {
           const left = `${(index * 37) % 100}%`;
           const bottom = `${(index * 19) % 100}%`;
           const isLarge = index % 4 === 0;
+
           return (
             <motion.span
               key={index}
@@ -122,9 +131,19 @@ export default function HeroSection() {
                 scale: 0.4,
               }}
               animate={{
-                opacity: isLarge ? [0, 0.25, 0.7, 0] : [0, 0.5, 1, 0],
-                y: [30, -80 - (index % 4) * 40, -180 - (index % 5) * 50],
-                x: [0, index % 2 === 0 ? 20 : -20, index % 2 === 0 ? -15 : 15],
+                opacity: isLarge
+                  ? [0, 0.2, 0.45, 0]
+                  : [0, 0.35, 0.65, 0],
+                y: [
+                  30,
+                  -80 - (index % 4) * 40,
+                  -180 - (index % 5) * 50,
+                ],
+                x: [
+                  0,
+                  index % 2 === 0 ? 20 : -20,
+                  index % 2 === 0 ? -15 : 15,
+                ],
                 scale: isLarge ? [0.6, 1.5, 2.2] : [0.5, 1.2, 0.4],
               }}
               transition={{
@@ -135,8 +154,8 @@ export default function HeroSection() {
               }}
               className={
                 isLarge
-                  ? "absolute rounded-full bg-[#c9a96e] blur-[4px]"
-                  : "absolute rounded-full bg-[#c9a96e]"
+                  ? "absolute rounded-full bg-[#b87924] blur-[4px]"
+                  : "absolute rounded-full bg-[#b87924]"
               }
               style={{
                 left,
@@ -148,6 +167,8 @@ export default function HeroSection() {
           );
         })}
       </div>
+
+      {/* Decorative circle */}
       <motion.div
         initial={{
           opacity: 0,
@@ -156,11 +177,11 @@ export default function HeroSection() {
         animate={
           isMobile
             ? {
-                opacity: 0.1,
+                opacity: 0.15,
                 scale: 1,
               }
             : {
-                opacity: 0.12,
+                opacity: 0.18,
                 scale: [0.95, 1.05, 0.95],
                 rotate: [0, 5, 0],
               }
@@ -187,68 +208,73 @@ export default function HeroSection() {
                 },
               }
         }
-        className={`absolute rounded-full border border-[#c9a96e]/20 pointer-events-none ${
+        className={`absolute rounded-full border border-[#C5A46D]/30 pointer-events-none ${
           isMobile ? "w-[400px] h-[400px]" : "w-[600px] h-[600px]"
         }`}
       />
+
       {!isMobile && (
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 0.08,
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.12 }}
           transition={{
             duration: 3,
             delay: 2,
           }}
-          className="absolute w-[750px] h-[750px] rounded-full border border-[#c9a96e]/10 pointer-events-none"
+          className="absolute w-[750px] h-[750px] rounded-full border border-[#C5A46D]/20 pointer-events-none"
         />
       )}
+
+      {/* Corner decorations */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, delay: 1 }}
         className="absolute top-6 left-6 w-16 h-16 pointer-events-none"
       >
-        <div className="absolute top-0 left-0 w-10 h-px bg-[#c9a96e]/30" />
-        <div className="absolute top-0 left-0 h-10 w-px bg-[#c9a96e]/30" />
+        <div className="absolute top-0 left-0 w-10 h-px bg-[#b87924]/50" />
+        <div className="absolute top-0 left-0 h-10 w-px bg-[#b87924]/50" />
       </motion.div>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, delay: 1 }}
         className="absolute top-6 right-6 w-16 h-16 pointer-events-none"
       >
-        <div className="absolute top-0 right-0 w-10 h-px bg-[#c9a96e]/30" />
-        <div className="absolute top-0 right-0 h-10 w-px bg-[#c9a96e]/30" />
+        <div className="absolute top-0 right-0 w-10 h-px bg-[#b87924]/50" />
+        <div className="absolute top-0 right-0 h-10 w-px bg-[#b87924]/50" />
       </motion.div>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, delay: 1 }}
         className="absolute bottom-6 left-6 w-16 h-16 pointer-events-none"
       >
-        <div className="absolute bottom-0 left-0 w-10 h-px bg-[#c9a96e]/30" />
-        <div className="absolute bottom-0 left-0 h-10 w-px bg-[#c9a96e]/30" />
+        <div className="absolute bottom-0 left-0 w-10 h-px bg-[#b87924]/50" />
+        <div className="absolute bottom-0 left-0 h-10 w-px bg-[#b87924]/50" />
       </motion.div>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, delay: 1 }}
         className="absolute bottom-6 right-6 w-16 h-16 pointer-events-none"
       >
-        <div className="absolute bottom-0 right-0 w-10 h-px bg-[#c9a96e]/30" />
-        <div className="absolute bottom-0 right-0 h-10 w-px bg-[#c9a96e]/30" />
+        <div className="absolute bottom-0 right-0 w-10 h-px bg-[#b87924]/50" />
+        <div className="absolute bottom-0 right-0 h-10 w-px bg-[#b87924]/50" />
       </motion.div>
+
+      {/* Main hero content */}
       <motion.div
         style={{
           y: contentY,
           opacity: contentOpacity,
         }}
-        className="relative z-10 w-full max-w-3xl mx-auto px-6 text-center"
+        className="relative z-10 w-full max-w-3xl mx-auto px-6 py-20 text-center"
       >
+        {/* Top ornament */}
         <motion.div
           initial={{
             opacity: 0,
@@ -264,7 +290,8 @@ export default function HeroSection() {
           }}
           className="flex items-center justify-center gap-4 mb-8"
         >
-          <span className="w-16 h-px bg-[#c9a96e]/40" />
+          <span className="w-16 h-px bg-[#b87924]/60" />
+
           <motion.span
             animate={{
               rotate: [0, 180, 360],
@@ -274,12 +301,15 @@ export default function HeroSection() {
               repeat: Infinity,
               ease: "linear",
             }}
-            className="text-[#c9a96e] text-sm"
+            className="text-[#A8874F] text-sm"
           >
             ✦
           </motion.span>
-          <span className="w-16 h-px bg-[#c9a96e]/40" />
+
+          <span className="w-16 h-px bg-[#b87924]/60" />
         </motion.div>
+
+        {/* Introductory Sinhala text */}
         <motion.div
           initial={{
             opacity: 0,
@@ -297,12 +327,14 @@ export default function HeroSection() {
             ease: "easeOut",
           }}
         >
-          <p className="text-lg md:text-2xl leading-relaxed text-[#c9a96e]">
+          <p className="text-lg md:text-2xl leading-relaxed text-[#8D7041]">
             සෑම ආදර කතාවකටම
             <br />
             සුන්දර ආරම්භයක් ඇත...
           </p>
         </motion.div>
+
+        {/* Gold divider */}
         <motion.div
           initial={{
             opacity: 0,
@@ -316,8 +348,9 @@ export default function HeroSection() {
             duration: 1.2,
             delay: 2,
           }}
-          className="h-px bg-[#c9a96e]/40 mx-auto mt-10"
+          className="h-px bg-[#b87924]/60 mx-auto mt-10"
         />
+
         <motion.p
           initial={{
             opacity: 0,
@@ -331,10 +364,12 @@ export default function HeroSection() {
             duration: 1,
             delay: 2.7,
           }}
-          className="mt-10 text-sm md:text-base text-white/50"
+          className="mt-10 text-sm md:text-base text-[#4a2c17]/75"
         >
           අපේ කතාවට
         </motion.p>
+
+        {/* Twelve years */}
         <motion.div
           initial={{
             opacity: 0,
@@ -357,11 +392,11 @@ export default function HeroSection() {
             animate={
               isMobile
                 ? {
-                    opacity: [0.2, 0.3, 0.2],
+                    opacity: [0.12, 0.2, 0.12],
                   }
                 : {
                     scale: [1, 1.25, 1],
-                    opacity: [0.2, 0.4, 0.2],
+                    opacity: [0.12, 0.25, 0.12],
                   }
             }
             transition={{
@@ -369,14 +404,16 @@ export default function HeroSection() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a96e] ${
+            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b87924] ${
               isMobile ? "w-28 h-28 blur-[50px]" : "w-36 h-36 blur-[80px]"
             }`}
           />
-          <span className="relative text-[100px] md:text-[150px] leading-none font-serif text-[#c9a96e] tracking-tight">
+
+          <span className="relative text-[100px] md:text-[150px] leading-none font-serif text-[#A8874F] tracking-tight">
             12
           </span>
         </motion.div>
+
         <motion.p
           initial={{
             opacity: 0,
@@ -390,10 +427,11 @@ export default function HeroSection() {
             duration: 1.5,
             delay: 4.3,
           }}
-          className="text-xs md:text-sm text-white/40"
+          className="text-xs md:text-sm text-[#4a2c17]/70"
         >
           වසර දොළහකට පෙර
         </motion.p>
+
         <motion.p
           initial={{
             opacity: 0,
@@ -407,10 +445,12 @@ export default function HeroSection() {
             duration: 1,
             delay: 5,
           }}
-          className="mt-8 text-xs tracking-[0.6em] text-white/30"
+          className="mt-8 text-xs tracking-[0.6em] text-[#4a2c17]/65"
         >
           2014
         </motion.p>
+
+        {/* Couple's names */}
         <div className="mt-8">
           <motion.h1
             initial={{
@@ -427,10 +467,11 @@ export default function HeroSection() {
               duration: 1.4,
               delay: 5.4,
             }}
-            className="text-5xl md:text-7xl font-serif tracking-wide"
+            className="text-5xl md:text-7xl font-serif tracking-wide text-[#4a2c17]"
           >
             නිපුනි
           </motion.h1>
+
           <motion.div
             initial={{
               opacity: 0,
@@ -446,10 +487,11 @@ export default function HeroSection() {
               duration: 0.9,
               delay: 6.2,
             }}
-            className="my-3 text-xl md:text-2xl text-[#c9a96e]"
+            className="my-3 text-xl md:text-2xl text-[#A8874F]"
           >
             &
           </motion.div>
+
           <motion.h1
             initial={{
               opacity: 0,
@@ -465,11 +507,13 @@ export default function HeroSection() {
               duration: 1.4,
               delay: 6.5,
             }}
-            className="text-5xl md:text-7xl font-serif tracking-wide"
+            className="text-5xl md:text-7xl font-serif tracking-wide text-[#4a2c17]"
           >
             නිපුන
           </motion.h1>
         </div>
+
+        {/* Love story caption */}
         <motion.div
           initial={{
             opacity: 0,
@@ -485,12 +529,14 @@ export default function HeroSection() {
           }}
           className="mt-10"
         >
-          <p className="text-sm md:text-base leading-8 text-white/50">
+          <p className="text-sm md:text-base leading-8 text-[#4a2c17]/75">
             වසර දොළහක ආදරයක්...
             <br />
             සදාකාලික බැඳීමක්...
           </p>
         </motion.div>
+
+        {/* Bottom ornament */}
         <motion.div
           initial={{
             opacity: 0,
@@ -506,7 +552,8 @@ export default function HeroSection() {
           }}
           className="flex items-center justify-center gap-4 mt-8"
         >
-          <span className="w-10 h-px bg-[#c9a96e]/30" />
+          <span className="w-10 h-px bg-[#b87924]/50" />
+
           <motion.span
             animate={{
               opacity: [0.4, 1, 0.4],
@@ -515,13 +562,16 @@ export default function HeroSection() {
               duration: 2,
               repeat: Infinity,
             }}
-            className="text-[10px] text-[#c9a96e]/60"
+            className="text-[10px] text-[#A8874F]/80"
           >
             ✦
           </motion.span>
-          <span className="w-10 h-px bg-[#c9a96e]/30" />
+
+          <span className="w-10 h-px bg-[#b87924]/50" />
         </motion.div>
       </motion.div>
+
+      {/* Scroll indicator */}
       <motion.div
         initial={{
           opacity: 0,
@@ -537,20 +587,21 @@ export default function HeroSection() {
         }}
         className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center"
       >
-        <p className="text-[10px] tracking-[0.25em] text-white/30 mb-3">
+        <p className="text-[10px] tracking-[0.25em] text-[#4a2c17]/65 mb-3">
           අපේ කතාව
         </p>
+
         <motion.div
           animate={{
             y: [0, 8, 0],
-            opacity: [0.35, 1, 0.35],
+            opacity: [0.4, 1, 0.4],
           }}
           transition={{
             duration: 1.8,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="text-[#c9a96e] text-xl"
+          className="text-[#A8874F] text-xl"
         >
           ↓
         </motion.div>
