@@ -17,10 +17,10 @@ export default function Home() {
         <main className="bg-[#f1e3ce] text-[#4a2c17] overflow-hidden">
           <HeroSection />
           <StoryIntro />
-          <MemorySection />
+          <ParentsSection />
+          {/* <MemorySection /> */}
           <PreShootSection />
           <EmotionalTransition />
-          <ParentsSection />
           <WeddingDetails />
           <CountdownSection />
           <RSVPSection />
