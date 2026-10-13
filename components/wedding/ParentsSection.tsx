@@ -79,7 +79,7 @@ export default function ParentsSection() {
             duration: isMobile ? 0.7 : 0.9,
             delay: 0.1,
           }}
-          className="text-center text-4xl font-light leading-tight text-[#4a2c17] md:text-4xl"
+          className="text-center text-4xl font-bold leading-tight text-[#4a2c17] md:text-4xl"
         >
           ආදරණීය,
         </motion.h2>
@@ -93,7 +93,7 @@ export default function ParentsSection() {
           }}
           className="my-10 h-px bg-[#8f5d1d]"
         />
-        <div className="grid w-full max-w-3xl gap-12 md:grid-cols-2 md:gap-20">
+        <div className="relative grid w-full max-w-3xl gap-12 md:grid-cols-2 md:gap-20">
           <motion.div
             initial={{ opacity: 0, y: isMobile ? 18 : 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -118,12 +118,56 @@ export default function ParentsSection() {
             </div>
             <div className="relative space-y-3">
               <p className="text-xl font-light text-[#4a2c17] md:text-2xl">
-                රත්නපාල ප්‍රනාන්දු
+                රත්නපාල ප්‍රනාන්දුගේ 
               </p>
+              <p>සහ</p>
               <p className="text-xl font-light text-[#4a2c17] md:text-2xl">
-                ශ්‍රියානි මුණසිංහ
+                ශ්‍රියානි මුණසිංහගේ 
+              </p>
+              <p>වැඩිමහල් දියණිය </p>
+              <p className="text-lg font-semibold text-[#4a2c17] md:text-xl">
+                නිපුනි මල්ෂානි
               </p>
             </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2"
+          >
+            <motion.div
+              animate={{ scale: [1, 1.08, 1] }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="relative flex h-24 w-24 items-center justify-center md:h-28 md:w-28"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full drop-shadow-[0_6px_14px_rgba(143,93,29,0.35)]"
+              >
+                <defs>
+                  <linearGradient id="heartGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#fbf3ea" />
+                    <stop offset="100%" stopColor="#e8d3a0" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c2 0 3.7 1.1 5.6 3.2C13.900 6.100 15.600 5 17.600 5 21 5 23.100 8.400 21.600 11.800 19.500 16.400 12 21 12 21z"
+                  fill="url(#heartGrad)"
+                  stroke="#8f5d1d"
+                  strokeWidth="0.5"
+                />
+              </svg>
+              <span className="relative -mt-1 text-sm font-semibold text-[#8f5d1d] md:text-base">
+                සමගින්
+              </span>
+            </motion.div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: isMobile ? 18 : 30 }}
@@ -147,15 +191,17 @@ export default function ParentsSection() {
               <span className="text-sm">✦</span>
               <span className="h-px w-8 bg-[#8f5d1d]/40" />
             </div>
-            <p className="relative mb-6 text-sm tracking-[0.15em] text-[#8f5d1d]">
-              මනාලයාගේ දෙමාපියන්
-            </p>
             <div className="relative space-y-3">
               <p className="text-xl font-light text-[#4a2c17] md:text-2xl">
-                ගම්මනගේ සුනිල්
+                G. සුනිල්ගේ 
               </p>
+              <p>සහ</p>
               <p className="text-xl font-light text-[#4a2c17] md:text-2xl">
-                අලවත්තගේ රූපිකා
+                A. රූපිකාගේ 
+              </p>
+              <p>එකම පුත්</p>
+              <p className="text-lg font-semibold text-[#4a2c17] md:text-xl">
+                නිපුන තරුක්ෂ 
               </p>
             </div>
           </motion.div>
@@ -172,11 +218,15 @@ export default function ParentsSection() {
         >
           <div className="mx-auto mb-8 h-px w-12 bg-[#8f5d1d]/60" />
           <p className="text-lg leading-loose text-[#8D7041] md:text-xl">
-            තම ආදරණීය දූ පුතුන්ගේ
+            ආදර කතාව, 
+            <br/>
+            දෙමව්පියන්ගේ ආශිර්වාදය මැද හෙළ කුල සිරිතට අනුව
             <br />
-            විවාහ මංගල්‍යයට
+            ජීවිත කාලය පුරාම එකට ලියන්නට අත්වැල් බැදගන්නා ඒ සුන්දර දිනය
             <br />
-            ඔබගේ සහභාගීත්වය ආදරයෙන් අපේක්ෂා කරමු.
+            තවත් සුන්දර කරන්නට ඔබගේ ආශීර්වාදය ද රැගෙන පැමිණෙන ලෙස
+            <br />
+            ගෞරවයෙන් සහ සෙනෙහසින් ආරාධනා කරමු.
           </p>
         </motion.div>
         <motion.div
@@ -189,7 +239,6 @@ export default function ParentsSection() {
           }}
           className="mt-14 flex flex-col items-center gap-3 text-[#8f5d1d]"
         >
-          <span className="text-xs tracking-[0.3em]">අපේ විශේෂ දවස</span>
           <motion.span
             animate={{
               y: isMobile ? [0, 5, 0] : [0, 7, 0],

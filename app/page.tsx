@@ -19,8 +19,8 @@ export default function Home() {
           <StoryIntro />
           <ParentsSection />
           {/* <MemorySection /> */}
-          <PreShootSection />
-          <EmotionalTransition />
+          {/* <PreShootSection /> */}
+          {/* <EmotionalTransition /> */}
           <WeddingDetails />
           <CountdownSection />
           <RSVPSection />

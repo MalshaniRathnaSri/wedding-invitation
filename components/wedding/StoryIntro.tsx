@@ -242,18 +242,13 @@ export default function StoryIntro() {
         />
         <motion.div {...reveal(2.4)} className="mx-auto max-w-xl">
           <p className="text-base leading-8 text-[#f6ead8]/95 sm:text-lg sm:leading-9 md:text-xl md:leading-10">
-            වසර ගණනාවක් පුරා හදවත් දෙහදක නිහඬව ලියැවුණු
-            ආදර කතාව, දෙමාපිය ආශිර්වාද මැද හෙළ සිරිතට
-            අනුව එකම මඟක පියමං කරන්නට පෙරුම් පිරූ
-            සුන්දර සිහිනයකි....
+            වසර ගණනාවක් පුරා දෙහදක නිහඬව ලියැවුණු ආදර කතාව,
           </p>
         </motion.div>
         <motion.div {...reveal(4.2)} className="mx-auto mt-7 max-w-xl">
           <p className="text-base leading-8 text-[#e6c27a] sm:text-lg sm:leading-9 md:text-xl md:leading-10">
-            අපේ නිහඬ ආදර කතාව ජීවිත කාලය පුරාම එකට
-            ලියන්නට අත්වැල් බැඳගන්නා ඒ සුන්දර දිනය
-            සැමරීමට අපිත් සමඟ අත්වැල් බැඳගන්නට
-            ඔබට කෙරෙන
+            ජීවිත කාලය පුරාම එකට ලියන්නට අත්වැල් බැඳගන්නා ඒ සුන්දර දිනය සැමරීමට
+            අපිත් සමඟ අත්වැල් බැඳගන්නට ඔබට කෙරෙන
           </p>
         </motion.div>
         <motion.p
@@ -295,7 +290,11 @@ export default function StoryIntro() {
               animate={
                 reduce ? undefined : { y: [0, 8, 0], opacity: [0.4, 1, 0.4] }
               }
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 1.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="text-xl"
             >
               ↓
