@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 type TimeLeft = {
   days: number;
@@ -78,9 +79,9 @@ export default function CountdownSection() {
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#4a2c17] px-6 py-24 text-[#f1e3ce] md:px-12">
+    <section className="relative min-h-screen overflow-hidden bg-[#f1e3ce] px-6 py-24 text-[#4a2c17] md:px-12">
       <motion.div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b87924]/10 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#8f5d1d]/15 ${
           isMobile ? "h-56 w-56 blur-[70px]" : "h-96 w-96 blur-3xl"
         }`}
         animate={{
@@ -94,7 +95,7 @@ export default function CountdownSection() {
         }}
       />
       <motion.div
-        className={`absolute -left-40 top-20 rounded-full border border-[#b87924]/15 ${
+        className={`absolute -left-40 top-20 rounded-full border border-[#8f5d1d]/25 ${
           isMobile ? "h-56 w-56" : "h-80 w-80"
         }`}
         animate={{
@@ -107,7 +108,7 @@ export default function CountdownSection() {
         }}
       />
       <motion.div
-        className={`absolute -right-40 bottom-20 rounded-full border border-[#b87924]/15 ${
+        className={`absolute -right-40 bottom-20 rounded-full border border-[#8f5d1d]/30 ${
           isMobile ? "h-56 w-56" : "h-80 w-80"
         }`}
         animate={{
@@ -128,9 +129,9 @@ export default function CountdownSection() {
           transition={{
             duration: isMobile ? 0.6 : 0.8,
           }}
-          className="mb-6 text-xs tracking-[0.35em] text-[#b87924]"
+          className="mb-6 text-xs tracking-[0.35em] text-[#8f5d1d]"
         >
-          අපේ විශේෂ දවසට
+          එනම් අපේ විශේෂ දවසට
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: isMobile ? 15 : 25 }}
@@ -139,34 +140,10 @@ export default function CountdownSection() {
           transition={{
             duration: isMobile ? 0.7 : 0.9,
           }}
-          className="text-4xl font-light leading-tight md:text-6xl"
+          className="text-4xl font-light leading-tight text-[#4a2c17] md:text-6xl"
         >
-          තවත් සුළු මොහොතක්...
+          තව...
         </motion.h2>
-        <motion.div
-          initial={{
-            opacity: 0,
-            scale: isMobile ? 0.98 : 0.95,
-          }}
-          whileInView={{
-            opacity: 1,
-            scale: 1,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: isMobile ? 0.7 : 1,
-            delay: 0.2,
-          }}
-          className="mt-10"
-        >
-          <p className="text-6xl font-light tracking-widest text-[#b87924] md:text-8xl">
-            15
-          </p>
-
-          <p className="mt-2 text-sm tracking-[0.45em] text-[#d7d0c3] md:text-base">
-            ජනවාරි 2027
-          </p>
-        </motion.div>
         <motion.div
           initial={{ width: 0, opacity: 0 }}
           whileInView={{ width: 80, opacity: 1 }}
@@ -175,7 +152,7 @@ export default function CountdownSection() {
             duration: isMobile ? 0.6 : 0.8,
             delay: 0.4,
           }}
-          className="my-12 h-px bg-[#b87924]"
+          className="my-12 h-px bg-[#8f5d1d]"
         />
         <motion.div
           initial={{ opacity: 0, y: isMobile ? 18 : 25 }}
@@ -203,17 +180,41 @@ export default function CountdownSection() {
                 duration: isMobile ? 0.5 : 0.6,
                 delay: 0.6 + index * 0.1,
               }}
-              className="border border-[#b87924]/20 bg-[#11110f]/60 px-4 py-7 backdrop-blur-sm"
+              className="border border-[#8f5d1d]/25 bg-gradient-to-b from-[#fbf3ea]/90 via-[#f3e4c4]/70 to-[#e8d3a0]/60 px-4 py-7 shadow-[0_10px_40px_-15px_rgba(143,93,29,0.35)] backdrop-blur-sm"
             >
-              <p className="text-3xl font-light text-[#f1e3ce] md:text-4xl">
+              <p className="text-3xl font-light text-[#4a2c17] md:text-4xl">
                 {String(item.value).padStart(2, "0")}
               </p>
 
-              <p className="mt-3 text-xs tracking-[0.2em] text-[#b87924]">
+              <p className="mt-3 text-xs tracking-[0.2em] text-[#8f5d1d]">
                 {item.label}
               </p>
             </motion.div>
           ))}
+        </motion.div>
+        <motion.div
+          initial={{
+            opacity: 0,
+            scale: isMobile ? 0.98 : 0.95,
+          }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: isMobile ? 0.7 : 1,
+            delay: 0.2,
+          }}
+          className="mt-10"
+        >
+          <p className="text-6xl font-light tracking-widest text-[#8f5d1d] md:text-8xl">
+            15
+          </p>
+
+          <p className="mt-2 text-sm tracking-[0.45em] text-[#8D7041] md:text-base">
+            ජනවාරි 2027
+          </p>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: isMobile ? 15 : 20 }}
@@ -225,14 +226,33 @@ export default function CountdownSection() {
           }}
           className="mt-14"
         >
-          <p className="text-lg leading-loose text-[#d7d0c3] md:text-xl">
+          <p className="text-lg leading-loose text-[#8D7041] md:text-xl">
             වසර දොළහක ආදරයකින්
             <br />
             සදාකාලික බැඳීමකට...
           </p>
-          <p className="mt-6 text-sm tracking-[0.3em] text-[#b87924]">
+          <p className="mt-6 text-sm tracking-[0.3em] text-[#8f5d1d]">
             නිපුනි & නිපුන
           </p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: isMobile ? 15 : 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: isMobile ? 0.8 : 1,
+            delay: 0.2,
+          }}
+          className="mt-16 w-full max-w-md"
+        >
+          <Image
+            src="/images/hands.png"
+            alt="නිපුනි & නිපුන"
+            width={0}
+            height={0}
+            sizes="(max-width: 768px) 100vw, 448px"
+            className="h-auto w-full rounded-3xl border border-[#8f5d1d]/25 shadow-[0_10px_40px_-15px_rgba(143,93,29,0.35)]"
+          />
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
@@ -242,7 +262,7 @@ export default function CountdownSection() {
             duration: isMobile ? 0.8 : 1,
             delay: 1,
           }}
-          className="mt-16 flex flex-col items-center gap-3 text-[#b87924]"
+          className="mt-16 flex flex-col items-center gap-3 text-[#8f5d1d]"
         >
           <span className="text-xs tracking-[0.3em]">ආදරයෙන් ඇරයුම්</span>
           <motion.span

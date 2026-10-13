@@ -66,7 +66,7 @@ export default function WeddingDetails() {
           }}
           className="mb-4 text-center text-xs tracking-[0.35em] text-[#d6ad62]"
         >
-          අපේ විශේෂ දවස
+          එනම්,
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: isMobile ? 15 : 25 }}
@@ -90,24 +90,7 @@ export default function WeddingDetails() {
           }}
           className="my-8 h-px bg-[#d6ad62]/70"
         />
-        <motion.div
-          initial={{ opacity: 0, y: isMobile ? 15 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: isMobile ? 0.7 : 0.9,
-            delay: 0.2,
-          }}
-          className="max-w-2xl text-center"
-        >
-          <p className="text-lg leading-loose text-[#f6ead8]/95 md:text-xl">
-            අපේ ආදර කතාවේ තවත් සුන්දර පරිච්ඡේදයකට
-            <br />
-            ඔබත් සමඟින් පියවර තැබීමට
-            <br />
-            අපි ආදරයෙන් ආරාධනා කරමු.
-          </p>
-        </motion.div>
+        
         <motion.div
           initial={{
             opacity: 0,
@@ -219,9 +202,6 @@ export default function WeddingDetails() {
           }}
           className="mt-16 text-center"
         >
-          <p className="text-lg text-[#f6ead8]/95 md:text-xl">
-            ඔබගේ පැමිණීම අපට සතුටකි.
-          </p>
           <div className="mt-10 flex flex-col items-center gap-3 text-[#d6ad62]">
             <span className="text-xs tracking-[0.3em]">අපේ ගමන සමඟින්</span>
             <motion.span
