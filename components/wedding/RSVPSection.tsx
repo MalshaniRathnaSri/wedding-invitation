@@ -68,7 +68,7 @@ export default function RSVPSection() {
           }}
           className="mb-6 text-xs tracking-[0.35em] text-[#d6ad62]"
         >
-          අපේ විශේෂ දවස
+          එදින,
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: isMobile ? 15 : 25 }}
@@ -79,7 +79,7 @@ export default function RSVPSection() {
           }}
           className="text-4xl font-light leading-tight text-[#e6c27a] md:text-6xl"
         >
-          ඔබත් අප සමඟද?
+          ඔබත් අප සමඟ එකතුවන්න.
         </motion.h2>
         <motion.div
           initial={{ width: 0, opacity: 0 }}
@@ -167,29 +167,10 @@ export default function RSVPSection() {
           viewport={{ once: true }}
           transition={{
             duration: isMobile ? 0.8 : 1,
-            delay: 0.8,
-          }}
-          className="mt-16"
-        >
-          <p className="text-sm tracking-[0.35em] text-[#e6c27a]">
-            නිපුනි & නිපුන
-          </p>
-
-          <p className="mt-4 text-xs tracking-[0.2em] text-[#f6ead8]/70">
-            15 · 01 · 2027
-          </p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: isMobile ? 0.8 : 1,
             delay: 1,
           }}
           className="mt-16 flex flex-col items-center gap-3 text-[#d6ad62]"
         >
-          <span className="text-xs tracking-[0.3em]">අපේ කතාවේ අවසානයට</span>
           <motion.span
             animate={{
               y: isMobile ? [0, 5, 0] : [0, 7, 0],

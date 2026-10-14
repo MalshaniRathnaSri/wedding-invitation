@@ -264,7 +264,6 @@ export default function CountdownSection() {
           }}
           className="mt-16 flex flex-col items-center gap-3 text-[#8f5d1d]"
         >
-          <span className="text-xs tracking-[0.3em]">ආදරයෙන් ඇරයුම්</span>
           <motion.span
             animate={{
               y: isMobile ? [0, 5, 0] : [0, 7, 0],
