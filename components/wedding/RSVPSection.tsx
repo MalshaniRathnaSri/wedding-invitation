@@ -20,14 +20,14 @@ export default function RSVPSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#f1e3ce] px-6 py-24 text-[#4a2c17] md:px-12">
+    <section className="relative min-h-screen overflow-hidden bg-[#4a2c17] px-6 py-24 text-[#f6ead8] md:px-12">
       <motion.div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b87924]/10 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b87924]/30 ${
           isMobile ? "h-56 w-56 blur-[70px]" : "h-96 w-96 blur-3xl"
         }`}
         animate={{
-          scale: isMobile ? [1, 1.06, 1] : [1, 1.12, 1],
-          opacity: isMobile ? [0.25, 0.38, 0.25] : [0.3, 0.5, 0.3],
+          scale: isMobile ? [1, 1.08, 1] : [1, 1.15, 1],
+          opacity: isMobile ? [0.35, 0.5, 0.35] : [0.5, 0.8, 0.5],
         }}
         transition={{
           duration: isMobile ? 14 : 8,
@@ -36,7 +36,7 @@ export default function RSVPSection() {
         }}
       />
       <motion.div
-        className={`absolute -left-36 top-20 rounded-full border border-[#b87924]/15 ${
+        className={`absolute -left-36 top-20 rounded-full border border-[#d6ad62]/30 ${
           isMobile ? "h-52 w-52" : "h-72 w-72"
         }`}
         animate={{ rotate: 360 }}
@@ -47,7 +47,7 @@ export default function RSVPSection() {
         }}
       />
       <motion.div
-        className={`absolute -right-36 bottom-20 rounded-full border border-[#b87924]/15 ${
+        className={`absolute -right-36 bottom-20 rounded-full border border-[#d6ad62]/25 ${
           isMobile ? "h-52 w-52" : "h-72 w-72"
         }`}
         animate={{ rotate: -360 }}
@@ -66,7 +66,7 @@ export default function RSVPSection() {
           transition={{
             duration: isMobile ? 0.6 : 0.8,
           }}
-          className="mb-6 text-xs tracking-[0.35em] text-[#8f5d1d]"
+          className="mb-6 text-xs tracking-[0.35em] text-[#d6ad62]"
         >
           අපේ විශේෂ දවස
         </motion.p>
@@ -77,7 +77,7 @@ export default function RSVPSection() {
           transition={{
             duration: isMobile ? 0.7 : 0.9,
           }}
-          className="text-4xl font-light leading-tight md:text-6xl"
+          className="text-4xl font-light leading-tight text-[#e6c27a] md:text-6xl"
         >
           ඔබත් අප සමඟද?
         </motion.h2>
@@ -89,7 +89,7 @@ export default function RSVPSection() {
             duration: isMobile ? 0.6 : 0.8,
             delay: 0.2,
           }}
-          className="my-9 h-px bg-[#9b7a45]"
+          className="my-9 h-px bg-[#d6ad62]/70"
         />
         <motion.p
           initial={{ opacity: 0, y: isMobile ? 15 : 20 }}
@@ -99,7 +99,7 @@ export default function RSVPSection() {
             duration: isMobile ? 0.7 : 0.9,
             delay: 0.3,
           }}
-          className="max-w-xl text-lg leading-loose text-[#4f4a42] md:text-xl"
+          className="max-w-xl text-lg leading-loose text-[#f6ead8]/70 md:text-xl"
         >
           අපේ සොඳුරු දිනය
           <br />
@@ -121,8 +121,8 @@ export default function RSVPSection() {
             onClick={() => setResponse("yes")}
             className={`flex-1 border px-6 py-4 text-sm tracking-[0.12em] transition-all duration-300 ${
               response === "yes"
-                ? "border-[#b87924] bg-[#9b7a45] text-white"
-                : "border-[#b87924] text-[#6b451c] hover:bg-[#9b7a45] hover:text-white"
+                ? "border-[#d6ad62] bg-[#d6ad62] text-[#4a2c17]"
+                : "border-[#d6ad62] text-[#e6c27a] hover:bg-[#d6ad62] hover:text-[#4a2c17]"
             }`}
           >
             සහභාගී වෙමි
@@ -132,8 +132,8 @@ export default function RSVPSection() {
             onClick={() => setResponse("no")}
             className={`flex-1 border px-6 py-4 text-sm tracking-[0.12em] transition-all duration-300 ${
               response === "no"
-                ? "border-[#8f5d1d] bg-[#6b5738] text-white"
-                : "border-[#b87924]/50 text-[#6b451c] hover:bg-[#6b5738] hover:text-white"
+                ? "border-[#d6ad62]/60 bg-[#f6ead8]/15 text-[#f6ead8]"
+                : "border-[#d6ad62]/40 text-[#f6ead8]/70 hover:bg-[#f6ead8]/10 hover:text-[#f6ead8]"
             }`}
           >
             සහභාගී වීමට නොහැක
@@ -154,7 +154,7 @@ export default function RSVPSection() {
             }}
             className="mt-10"
           >
-            <p className="text-base text-[#6b451c]">
+            <p className="text-base text-[#e6c27a]">
               {response === "yes"
                 ? "ඔබගේ පැමිණීම අපට මහත් සතුටකි. 🤍"
                 : "ඔබගේ ආදරය සහ සුබ පැතුම් අපට සදා වටිනා ය."}
@@ -171,11 +171,11 @@ export default function RSVPSection() {
           }}
           className="mt-16"
         >
-          <p className="text-sm tracking-[0.35em] text-[#8f5d1d]">
+          <p className="text-sm tracking-[0.35em] text-[#e6c27a]">
             නිපුනි & නිපුන
           </p>
 
-          <p className="mt-4 text-xs tracking-[0.2em] text-[#777067]">
+          <p className="mt-4 text-xs tracking-[0.2em] text-[#f6ead8]/70">
             15 · 01 · 2027
           </p>
         </motion.div>
@@ -187,7 +187,7 @@ export default function RSVPSection() {
             duration: isMobile ? 0.8 : 1,
             delay: 1,
           }}
-          className="mt-16 flex flex-col items-center gap-3 text-[#8f5d1d]"
+          className="mt-16 flex flex-col items-center gap-3 text-[#d6ad62]"
         >
           <span className="text-xs tracking-[0.3em]">අපේ කතාවේ අවසානයට</span>
           <motion.span

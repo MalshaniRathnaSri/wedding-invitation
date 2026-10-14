@@ -131,7 +131,7 @@ export default function CountdownSection() {
           }}
           className="mb-6 text-xs tracking-[0.35em] text-[#8f5d1d]"
         >
-          එනම් අපේ විශේෂ දවසට
+          අපේ දවසට
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: isMobile ? 15 : 25 }}
@@ -227,9 +227,9 @@ export default function CountdownSection() {
           className="mt-14"
         >
           <p className="text-lg leading-loose text-[#8D7041] md:text-xl">
-            වසර දොළහක ආදරයකින්
+            අපේ ජීවිතයේ සොඳුරු වස්සානේ 
             <br />
-            සදාකාලික බැඳීමකට...
+            ආරම්භය......
           </p>
           <p className="mt-6 text-sm tracking-[0.3em] text-[#8f5d1d]">
             නිපුනි & නිපුන

@@ -118,11 +118,11 @@ export default function ParentsSection() {
             </div>
             <div className="relative space-y-3">
               <p className="text-xl font-light text-[#4a2c17] md:text-2xl">
-                රත්නපාල ප්‍රනාන්දුගේ 
+                රත්නපාල ප්‍රනාන්දු මහතාගේ 
               </p>
               <p>සහ</p>
               <p className="text-xl font-light text-[#4a2c17] md:text-2xl">
-                ශ්‍රියානි මුණසිංහගේ 
+                ශ්‍රියානි මුණසිංහ මහත්මියගේ 
               </p>
               <p>වැඩිමහල් දියණිය </p>
               <p className="text-lg font-semibold text-[#4a2c17] md:text-xl">
@@ -193,11 +193,11 @@ export default function ParentsSection() {
             </div>
             <div className="relative space-y-3">
               <p className="text-xl font-light text-[#4a2c17] md:text-2xl">
-                G. සුනිල්ගේ 
+                G. සුනිල් මහතාගේ 
               </p>
               <p>සහ</p>
               <p className="text-xl font-light text-[#4a2c17] md:text-2xl">
-                A. රූපිකාගේ 
+                A. රූපිකා මහත්මියගේ 
               </p>
               <p>එකම පුත්</p>
               <p className="text-lg font-semibold text-[#4a2c17] md:text-xl">

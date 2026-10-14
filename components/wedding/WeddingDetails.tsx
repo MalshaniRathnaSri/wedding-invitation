@@ -203,7 +203,6 @@ export default function WeddingDetails() {
           className="mt-16 text-center"
         >
           <div className="mt-10 flex flex-col items-center gap-3 text-[#d6ad62]">
-            <span className="text-xs tracking-[0.3em]">අපේ ගමන සමඟින්</span>
             <motion.span
               animate={{
                 y: isMobile ? [0, 5, 0] : [0, 7, 0],

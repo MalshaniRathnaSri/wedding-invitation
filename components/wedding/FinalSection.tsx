@@ -18,14 +18,14 @@ export default function FinalSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#4a2c17] px-6 py-24 text-[#f1e3ce] md:px-12">
+    <section className="relative min-h-screen overflow-hidden bg-[#f1e3ce] px-6 py-24 text-[#4a2c17] md:px-12">
       <motion.div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b87924]/10 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#8f5d1d]/15 ${
           isMobile ? "h-56 w-56 blur-[70px]" : "h-96 w-96 blur-3xl"
         }`}
         animate={{
-          scale: isMobile ? [1, 1.08, 1] : [1, 1.18, 1],
-          opacity: isMobile ? [0.2, 0.32, 0.2] : [0.2, 0.45, 0.2],
+          scale: isMobile ? [1, 1.06, 1] : [1, 1.15, 1],
+          opacity: isMobile ? [0.2, 0.35, 0.2] : [0.25, 0.5, 0.25],
         }}
         transition={{
           duration: isMobile ? 14 : 8,
@@ -34,7 +34,7 @@ export default function FinalSection() {
         }}
       />
       <motion.div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#b87924]/10 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#8f5d1d]/25 ${
           isMobile ? "h-[300px] w-[300px]" : "h-[500px] w-[500px]"
         }`}
         animate={{ rotate: 360 }}
@@ -45,7 +45,7 @@ export default function FinalSection() {
         }}
       />
       <motion.div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#b87924]/10 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#8f5d1d]/30 ${
           isMobile ? "h-[220px] w-[220px]" : "h-[360px] w-[360px]"
         }`}
         animate={{ rotate: -360 }}
@@ -64,7 +64,7 @@ export default function FinalSection() {
           transition={{
             duration: isMobile ? 0.7 : 0.9,
           }}
-          className="mb-10 text-xs tracking-[0.4em] text-[#b87924]"
+          className="mb-10 text-xs tracking-[0.4em] text-[#8f5d1d]"
         >
           අපේ කතාව
         </motion.p>
@@ -77,15 +77,15 @@ export default function FinalSection() {
           }}
           className="space-y-3"
         >
-          <p className="text-2xl font-light text-[#d7d0c3] md:text-4xl">
+          <p className="text-2xl font-light text-[#4a2c17] md:text-4xl">
             වසර දොළහක්...
           </p>
 
-          <p className="text-2xl font-light text-[#d7d0c3] md:text-4xl">
+          <p className="text-2xl font-light text-[#4a2c17] md:text-4xl">
             මතකයන් දහසක්...
           </p>
 
-          <p className="text-2xl font-light text-[#d7d0c3] md:text-4xl">
+          <p className="text-2xl font-light text-[#4a2c17] md:text-4xl">
             එක් හදවතක්...
           </p>
         </motion.div>
@@ -97,7 +97,7 @@ export default function FinalSection() {
             duration: isMobile ? 0.8 : 1,
             delay: isMobile ? 0.3 : 0.4,
           }}
-          className="my-12 h-px bg-[#b87924]"
+          className="my-12 h-px bg-[#8f5d1d]"
         />
         <motion.div
           initial={{
@@ -114,10 +114,10 @@ export default function FinalSection() {
             delay: isMobile ? 0.4 : 0.5,
           }}
         >
-          <p className="text-lg tracking-[0.25em] text-[#b87924] md:text-xl">
+          <p className="text-lg tracking-[0.25em] text-[#8f5d1d] md:text-xl">
             දැන්...
           </p>
-          <h2 className="mt-5 text-4xl font-light leading-tight md:text-6xl">
+          <h2 className="mt-5 text-4xl font-light leading-tight text-[#4a2c17] md:text-6xl">
             සදාකාලිකව
             <br />
             එකට...
@@ -133,13 +133,13 @@ export default function FinalSection() {
           }}
           className="mt-14"
         >
-          <p className="text-3xl font-light md:text-5xl">
+          <p className="text-3xl font-light text-[#4a2c17] md:text-5xl">
             නිපුනි
-            <span className="mx-4 text-[#b87924]">&</span>
+            <span className="mx-4 text-[#8f5d1d]">&</span>
             නිපුන
           </p>
-          <div className="mx-auto mt-7 h-px w-12 bg-[#b87924]/60" />
-          <p className="mt-6 text-sm tracking-[0.35em] text-[#b87924]">
+          <div className="mx-auto mt-7 h-px w-12 bg-[#8f5d1d]/60" />
+          <p className="mt-6 text-sm tracking-[0.35em] text-[#8f5d1d]">
             15 · 01 · 2027
           </p>
         </motion.div>
@@ -153,7 +153,7 @@ export default function FinalSection() {
           }}
           className="mt-16"
         >
-          <p className="text-base leading-loose text-[#a9a39a] md:text-lg">
+          <p className="text-base leading-loose text-[#8D7041] md:text-lg">
             අපේ ආදර කතාවේ
             <br />
             මේ සොඳුරු පරිච්ඡේදයේ
@@ -173,11 +173,11 @@ export default function FinalSection() {
           }}
           className="mt-20"
         >
-          <div className="mx-auto mb-5 h-8 w-px bg-[#b87924]/50" />
-          <p className="text-[10px] tracking-[0.5em] text-[#b87924]">
+          <div className="mx-auto mb-5 h-8 w-px bg-[#8f5d1d]/50" />
+          <p className="text-[10px] tracking-[0.5em] text-[#8f5d1d]">
             WITH LOVE
           </p>
-          <p className="mt-3 text-xs tracking-[0.3em] text-[#77736c]">
+          <p className="mt-3 text-xs tracking-[0.3em] text-[#8D7041]">
             NIPUNI & NIPUNA
           </p>
         </motion.div>
