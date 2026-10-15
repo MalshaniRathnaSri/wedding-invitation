@@ -155,7 +155,7 @@ export default function WeddingDetails() {
             className="border border-[#d6ad62]/40 bg-[#f6ead8]/5 px-6 py-8 text-center backdrop-blur-sm"
           >
             <p className="mb-3 text-sm tracking-wide text-[#e6c27a]">ස්ථානය</p>
-            <p className="text-2xl font-light">Season</p>
+            <p className="text-2xl font-light">The Season</p>
             <p className="mt-1 text-sm text-[#f6ead8]/70">Waskaduwa</p>
           </motion.div>
         </div>
@@ -180,7 +180,7 @@ export default function WeddingDetails() {
               <p className="text-xs tracking-[0.35em] text-[#d6ad62]">
                 LOCATION
               </p>
-              <h3 className="mt-3 text-3xl font-light">Season, Waskaduwa</h3>
+              <h3 className="mt-3 text-3xl font-light">The Season, Waskaduwa</h3>
               <a
                 href="https://maps.app.goo.gl/AJXDZgSiGqDuFcp2A"
                 target="_blank"
