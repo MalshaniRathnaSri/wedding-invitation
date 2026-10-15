@@ -77,7 +77,7 @@ export default function RSVPSection() {
           transition={{
             duration: isMobile ? 0.7 : 0.9,
           }}
-          className="text-4xl font-light leading-tight text-[#e6c27a] md:text-6xl"
+          className="text-2xl font-light leading-tight text-[#e6c27a] md:text-4xl"
         >
           ඔබත් අප සමඟ එකතුවන්න.
         </motion.h2>
@@ -101,11 +101,23 @@ export default function RSVPSection() {
           }}
           className="max-w-xl text-lg leading-loose text-[#f6ead8]/70 md:text-xl"
         >
-          අපේ සොඳුරු දිනය
+          මේ සොඳුරු දවස
           <br />
-          ඔබ සමඟ බෙදාගැනීමට
+          ඔබත් සමග ආදරයෙන්
           <br />
-          අපි ආදරයෙන් බලා සිටිමු.
+          ගත කිරීමට අප මග බලා සිටිමු.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: isMobile ? 12 : 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: isMobile ? 0.6 : 0.8,
+            delay: 0.4,
+          }}
+          className="mt-12 max-w-md text-sm leading-loose tracking-[0.04em] text-[#e6c27a] md:text-base"
+        >
+          ඔබගේ පැමිණීම මෙහි සඳහන් කරන මෙන් කාරුණිකව ඉල්ලා සිටිමි
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: isMobile ? 18 : 25 }}

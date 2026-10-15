@@ -52,11 +52,14 @@ export default function CountdownSection() {
   }, []);
 
   useEffect(() => {
-    setTimeLeft(calculateTimeLeft());
+    const initialUpdate = setTimeout(() => setTimeLeft(calculateTimeLeft()), 0);
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-    return () => clearInterval(timer);
+    return () => {
+      clearTimeout(initialUpdate);
+      clearInterval(timer);
+    };
   }, []);
 
   const countdownItems = [

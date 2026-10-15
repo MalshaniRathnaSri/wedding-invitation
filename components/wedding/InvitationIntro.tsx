@@ -2,20 +2,40 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Cormorant_Garamond, Noto_Serif_Sinhala } from "next/font/google";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
 
-/*
-  Palette (gold + white)
-  white      #ffffff / #fffdf8
-  pearl      #fff6dc
-  gold-light #ecd089
-  gold       #d4b062
-  gold-mid   #c29a45
-  gold-deep  #a67c2a
-  gold-text  #8a6420   (readable on white)
-  ink        #5a3f10   (headings on white)
-*/
+const display = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const sinhala = Noto_Serif_Sinhala({
+  subsets: ["sinhala", "latin"],
+  variable: "--font-sinhala",
+  display: "swap",
+});
+
+const bodyFont = {
+  fontFamily: "var(--font-sinhala), var(--font-display), serif",
+};
+const displayFont = {
+  fontFamily: "var(--font-display), var(--font-sinhala), serif",
+};
+
+const WEDDING_TIME = new Date("2027-01-15T09:05:00+05:30").getTime();
+
+const CALENDAR_URL =
+  "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+  "&text=" +
+  encodeURIComponent("Nipuni & Nipuna Wedding") +
+  "&dates=20270115T033500Z/20270115T073500Z" +
+  "&location=" +
+  encodeURIComponent("Season, Waskaduwa");
 
 interface InvitationIntroProps {
   onOpen: () => void;
@@ -25,12 +45,12 @@ type Stage = "closed" | "opening" | "revealed";
 
 const cardContainer: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.13, delayChildren: 0.55 } },
+  show: { transition: { staggerChildren: 0.11, delayChildren: 0.5 } },
 };
 
 const cardItem: Variants = {
   hidden: { opacity: 0, y: 14 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
 const sparkles = [
@@ -46,6 +66,135 @@ const sparkles = [
   { left: "94%", size: 3, delay: 0.9, duration: 6.6 },
 ];
 
+function Countdown() {
+  const [now, setNow] = useState<number | null>(null);
+
+  useEffect(() => {
+    const initialUpdate = setTimeout(() => setNow(Date.now()), 0);
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => {
+      clearTimeout(initialUpdate);
+      clearInterval(id);
+    };
+  }, []);
+
+  if (now === null) return null;
+  const diff = WEDDING_TIME - now;
+  if (diff <= 0) return null;
+
+  const s = Math.floor(diff / 1000);
+  const units = [
+    { value: Math.floor(s / 86400), label: "දින" },
+    { value: Math.floor((s % 86400) / 3600), label: "පැය" },
+    { value: Math.floor((s % 3600) / 60), label: "මිනිත්තු" },
+    { value: s % 60, label: "තත්පර" },
+  ];
+
+  return (
+    <div
+      className="grid w-full grid-cols-4 gap-2"
+      role="timer"
+      aria-label="Time remaining until the wedding"
+    >
+      {units.map((u) => (
+        <div
+          key={u.label}
+          className="rounded-md border border-[#c29a45]/50 bg-gradient-to-b from-white to-[#fff6dc] py-2.5"
+        >
+          <p
+            className="text-2xl font-semibold leading-none tabular-nums text-[#5a3f10] sm:text-3xl"
+            style={displayFont}
+          >
+            {String(u.value).padStart(2, "0")}
+          </p>
+          <p className="mt-1.5 text-[11px] text-[#8a6420]">{u.label}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MonogramSeal({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 56 56"
+      className={className}
+      style={{
+        filter: "drop-shadow(0 4px 6px rgba(70, 45, 10, 0.45))",
+      }}
+      aria-hidden="true"
+    >
+      <defs>
+        <radialGradient id="dark-gold-bg" cx="30%" cy="25%" r="85%">
+          <stop offset="0%" stopColor="#a98232" />
+          <stop offset="45%" stopColor="#76551b" />
+          <stop offset="80%" stopColor="#49300d" />
+          <stop offset="100%" stopColor="#302009" />
+        </radialGradient>
+        <linearGradient id="dark-gold-rim" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#ead59a" />
+          <stop offset="50%" stopColor="#b28a3e" />
+          <stop offset="100%" stopColor="#6f4d18" />
+        </linearGradient>
+      </defs>
+      <circle cx="28" cy="28" r="26" fill="#39270e" />
+      <circle
+        cx="28"
+        cy="28"
+        r="24.8"
+        fill="none"
+        stroke="url(#dark-gold-rim)"
+        strokeWidth="1.2"
+      />
+      <circle cx="28" cy="28" r="23.5" fill="url(#dark-gold-bg)" />
+      <circle
+        cx="28"
+        cy="28"
+        r="20.5"
+        fill="none"
+        stroke="#d1b16b"
+        strokeOpacity="0.9"
+        strokeWidth="0.8"
+      />
+      <circle
+        cx="28"
+        cy="28"
+        r="18.3"
+        fill="none"
+        stroke="#3d290c"
+        strokeOpacity="0.85"
+        strokeWidth="0.6"
+      />
+      <path d="M28 5.8 L29.5 8 L28 10.2 L26.5 8 Z" fill="#e2c783" />
+      <path d="M28 45.8 L29.5 48 L28 50.2 L26.5 48 Z" fill="#e2c783" />
+      <text
+        x="22"
+        y="30"
+        textAnchor="middle"
+        fontFamily="Georgia, serif"
+        fontSize="20"
+        fontWeight="bold"
+        fontStyle="italic"
+        fill="#fff0bd"
+      >
+        N
+      </text>
+      <text
+        x="35"
+        y="38"
+        textAnchor="middle"
+        fontFamily="Georgia, serif"
+        fontSize="20"
+        fontWeight="bold"
+        fontStyle="italic"
+        fill="#e2c783"
+      >
+        N
+      </text>
+    </svg>
+  );
+}
+
 export default function InvitationIntro({ onOpen }: InvitationIntroProps) {
   const reduce = useReducedMotion();
   const [stage, setStage] = useState<Stage>("closed");
@@ -58,52 +207,24 @@ export default function InvitationIntro({ onOpen }: InvitationIntroProps) {
     setStage(reduce ? "revealed" : "opening");
   };
 
-  // After the envelope finishes opening, bring in the full card.
   useEffect(() => {
     if (stage !== "opening") return;
-    const timer = setTimeout(() => setStage("revealed"), 2300);
+    const timer = setTimeout(() => setStage("revealed"), 3400);
     return () => clearTimeout(timer);
   }, [stage]);
 
   return (
     <motion.section
-      className="fixed inset-0 z-[100] overflow-hidden bg-[#fffdf8] text-[#5a3f10]"
+      className={`${display.variable} ${sinhala.variable} fixed inset-0 z-[100] overflow-hidden bg-[#fffdf8] text-[#5a3f10]`}
+      style={bodyFont}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.03 }}
       transition={{ duration: t(0.8) }}
+      aria-label="Wedding invitation"
     >
-      {/* White to soft-gold wash */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#ffffff_0%,_#fffaf0_55%,_#f6e7c3_100%)]" />
 
-      {/* Breathing gold glow */}
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ecd089]/50 blur-[70px] md:h-96 md:w-96 md:blur-3xl"
-        animate={
-          reduce
-            ? undefined
-            : { scale: [1, 1.15, 1], opacity: [0.4, 0.8, 0.4] }
-        }
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Slow rings */}
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#c29a45]/30 md:h-[520px] md:w-[520px]"
-        animate={reduce ? undefined : { rotate: 360 }}
-        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-      />
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[230px] w-[230px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#c29a45]/35 md:h-[380px] md:w-[380px]"
-        animate={reduce ? undefined : { rotate: -360 }}
-        transition={{ duration: 65, repeat: Infinity, ease: "linear" }}
-      />
-
-      {/* Page frame */}
-      <div className="pointer-events-none absolute inset-3 border border-[#c29a45]/60 sm:inset-5" />
-      <div className="pointer-events-none absolute inset-5 border border-[#c29a45]/25 sm:inset-8" />
-
-      {/* Floating gold sparkles once the card is shown */}
       {stage === "revealed" && !reduce && (
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           {sparkles.map((s, i) => (
@@ -125,9 +246,8 @@ export default function InvitationIntro({ onOpen }: InvitationIntroProps) {
       )}
 
       <div className="relative z-10 flex h-full w-full justify-center overflow-y-auto px-5 py-10">
-        {/* ============ STAGE 1: ENVELOPE ============ */}
         <motion.div
-          className="absolute inset-0 flex flex-col items-center justify-center px-5"
+          className="absolute inset-0 flex flex-col items-center justify-center px-5 pt-[12vh]"
           animate={
             stage === "revealed"
               ? { opacity: 0, y: 140, scale: 0.9 }
@@ -136,188 +256,178 @@ export default function InvitationIntro({ onOpen }: InvitationIntroProps) {
           transition={{ duration: t(0.7), ease: [0.4, 0, 0.2, 1] }}
           style={{ pointerEvents: stage === "revealed" ? "none" : "auto" }}
         >
-          <motion.p
-            className="mb-10 text-center font-serif text-xl italic tracking-wide text-[#8a6420] sm:text-2xl"
-            animate={{
-              opacity: stage === "closed" ? 1 : 0,
-              y: stage === "closed" ? 0 : -10,
-            }}
-            transition={{ duration: t(0.5) }}
-          >
-            ඔබට ආරාධනාවක්
-          </motion.p>
-
-          {/* Envelope (tappable anywhere) */}
           <motion.div
+            role="button"
+            tabIndex={stage === "closed" ? 0 : -1}
+            aria-label="Open the invitation"
             onClick={handleTouch}
-            className="relative w-[min(88vw,420px)] cursor-pointer"
-            style={{ perspective: 1400, aspectRatio: "10 / 7" }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleTouch();
+              }
+            }}
+            className="relative w-[min(78vw,360px,36svh)] cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#c29a45] focus-visible:ring-offset-4 focus-visible:ring-offset-[#fffdf8]"
+            style={{ aspectRatio: "5 / 6" }}
+            initial={{ y: "0%" }}
             animate={
-              reduce || isOpening
-                ? { y: 0, rotate: 0 }
-                : { y: [0, -6, 0], rotate: [-0.4, 0.4, -0.4] }
+              reduce
+                ? { y: "0%" }
+                : isOpening
+                  ? { y: "32%" }
+                  : { y: ["0%", "-2%", "0%"] }
             }
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            whileTap={reduce || isOpening ? undefined : { scale: 0.97 }}
+            transition={
+              isOpening
+                ? { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+                : { duration: 4.5, repeat: Infinity, ease: "easeInOut" }
+            }
+            whileTap={reduce || isOpening ? undefined : { scale: 0.98 }}
           >
-            {/* Soft ground shadow */}
-            <div className="absolute inset-x-[4%] -bottom-4 h-6 rounded-full bg-[#a67c2a]/35 blur-xl" />
-
-            {/* Back panel */}
-            <div className="absolute inset-0 rounded-[3px] bg-gradient-to-b from-[#c29a45] to-[#a67c2a] shadow-[0_25px_60px_-20px_rgba(166,124,42,0.75)]" />
-
-            {/* The card inside the envelope */}
+            <div className="absolute inset-x-[8%] -bottom-4 h-6 rounded-full bg-[#a67c2a]/25 blur-xl" />
+            <div className="absolute inset-0 border border-[#c29a45] bg-[#f8f6f1]" />
             <motion.div
-              className="absolute bottom-[5%] left-[6%] right-[6%] top-[5%] z-10 overflow-hidden rounded-[2px] border border-[#d4b062] bg-gradient-to-b from-white to-[#fffaf0] shadow-[0_6px_24px_-8px_rgba(90,63,16,0.45)]"
-              animate={isOpening ? { y: "-58%" } : { y: "0%" }}
+              className="absolute bottom-[6%] left-[8%] right-[8%] top-[6%] z-10 overflow-hidden border border-[#d4b062] bg-white shadow-[0_8px_24px_-10px_rgba(90,63,16,0.45)]"
+              animate={isOpening ? { y: "-86%" } : { y: "0%" }}
               transition={{
-                delay: t(0.85),
-                duration: t(1),
+                delay: t(0.8),
+                duration: t(1.1),
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
               <div className="absolute inset-1.5 border border-[#c29a45]/40" />
-              <div className="flex h-full flex-col items-center justify-start pt-[9%] text-center">
+              <div className="relative flex h-full flex-col items-center justify-start pt-[12%] text-center">
                 <span className="text-sm text-[#c29a45]">✧</span>
-                <p className="mt-1 font-serif text-xl tracking-wide text-[#5a3f10] sm:text-2xl">
-                  Nipuni <span className="text-[#a67c2a]">&amp;</span> Nipuna
+                <p
+                  className="mt-1 bg-gradient-to-r from-[#a67c2a] via-[#d9b865] to-[#a67c2a] bg-clip-text text-2xl font-semibold tracking-wide text-transparent sm:text-3xl leading-relaxed"
+                  style={displayFont}
+                >
+                  නිපුනි
+                  <span className="block">&amp;</span>
+                  <span className="block">නිපුන</span>
                 </p>
-                <span className="mt-2 h-px w-16 bg-[#c29a45]/60" />
-                <p className="mt-2 text-[11px] tracking-[0.25em] text-[#8a6420]">
-                  15 · 01 · 2027
+                <p className="mt-3 flex justify-center">
+                  <Image
+                    src="/images/hands.png"
+                    alt="නිපුනි & නිපුන"
+                    width={180}
+                    height={180}
+                    sizes="180px"
+                    className="h-auto w-[100%] max-w-[180px] rounded-2xl border border-[#8f5d1d]/25 shadow-[0_10px_30px_-15px_rgba(143,93,29,0.35)]"
+                  />
                 </p>
               </div>
             </motion.div>
-
-            {/* Front pocket: left, right and bottom folds */}
-            <div className="pointer-events-none absolute inset-0 z-20">
-              <div
-                className="absolute inset-0 bg-gradient-to-r from-[#c9a24e] to-[#d9b868]"
-                style={{ clipPath: "polygon(0 0, 50% 58%, 0 100%)" }}
+            <svg
+              className="pointer-events-none absolute inset-0 z-20 h-full w-full"
+              viewBox="0 0 100 120"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="env3-front" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stopColor="#ffffff" />
+                  <stop offset="1" stopColor="#fbfaf7" />
+                </linearGradient>
+              </defs>
+              <polygon
+                points="0,0 50,43.2 100,0 100,120 0,120"
+                fill="url(#env3-front)"
+                stroke="#c29a45"
+                strokeWidth="1"
+                strokeLinejoin="round"
+                vectorEffect="non-scaling-stroke"
               />
-              <div
-                className="absolute inset-0 bg-gradient-to-l from-[#c9a24e] to-[#d9b868]"
-                style={{ clipPath: "polygon(100% 0, 50% 58%, 100% 100%)" }}
+            </svg>
+            <div className="pointer-events-none absolute bottom-[7%] right-[9%] z-[25] aspect-square w-[27%] overflow-hidden rounded-full border border-[#c29a45] bg-white/90">
+              <Image
+                src="/images/wedding-couple.png"
+                alt=""
+                fill
+                sizes="100px"
+                className="object-contain p-1.5"
               />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-[#e2c479] to-[#d4b062]"
-                style={{ clipPath: "polygon(0 100%, 50% 44%, 100% 100%)" }}
-              />
-              {/* Fine white fold lines */}
-              <svg
-                className="absolute inset-0 h-full w-full"
-                viewBox="0 0 100 70"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <g
-                  fill="none"
-                  stroke="#ffffff"
-                  strokeOpacity="0.6"
-                  strokeWidth="0.3"
-                >
-                  <path d="M0 0 L50 40.6 L0 70" />
-                  <path d="M100 0 L50 40.6 L100 70" />
-                  <path d="M0 70 L50 30.8 L100 70" />
-                </g>
-              </svg>
             </div>
-
-            {/* Flap */}
             <motion.div
-              className="absolute inset-x-0 top-0 h-[58%]"
-              style={{
-                transformOrigin: "top center",
-                clipPath: "polygon(0 0, 100% 0, 50% 100%)",
-                background: "linear-gradient(180deg, #ecd089 0%, #d4b062 100%)",
-              }}
-              initial={{ rotateX: 0, zIndex: 30 }}
+              className="absolute inset-x-0 top-0 h-[36%]"
+              style={{ transformOrigin: "top center" }}
+              initial={{ scaleY: 1, zIndex: 30 }}
               animate={
                 isOpening
-                  ? { rotateX: 180, zIndex: 1 }
-                  : { rotateX: 0, zIndex: 30 }
+                  ? { scaleY: -1, zIndex: 1 }
+                  : { scaleY: 1, zIndex: 30 }
               }
               transition={{
-                rotateX: {
+                scaleY: {
                   delay: t(0.3),
-                  duration: t(0.75),
+                  duration: t(0.7),
                   ease: [0.45, 0, 0.2, 1],
                 },
                 zIndex: { delay: t(0.65), duration: 0 },
               }}
-            />
-
-            {/* Pearl-white wax seal */}
-            <motion.div
-              className="absolute left-1/2 top-[58%] z-40 -translate-x-1/2 -translate-y-1/2"
-              animate={
-                isOpening
-                  ? {
-                      scale: [1, 1.25, 0.2],
-                      opacity: [1, 1, 0],
-                      rotate: [0, -8, 20],
-                    }
-                  : reduce
-                    ? undefined
-                    : { scale: [1, 1.06, 1] }
-              }
-              transition={
-                isOpening
-                  ? { duration: t(0.4), ease: "easeIn" }
-                  : { duration: 2.4, repeat: Infinity, ease: "easeInOut" }
-              }
             >
-              {!isOpening && !reduce && (
-                <motion.span
-                  className="absolute inset-0 rounded-full border-2 border-white"
-                  animate={{ scale: [1, 1.9], opacity: [0.8, 0] }}
-                  transition={{
-                    duration: 2.4,
-                    repeat: Infinity,
-                    ease: "easeOut",
-                  }}
+              <svg
+                className="h-full w-full"
+                viewBox="0 0 100 43.2"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <motion.polygon
+                  points="0,0 100,0 50,43.2"
+                  stroke="#c29a45"
+                  strokeWidth="1"
+                  strokeLinejoin="round"
+                  vectorEffect="non-scaling-stroke"
+                  initial={{ fill: "#ffffff" }}
+                  animate={{ fill: isOpening ? "#f2efe8" : "#ffffff" }}
+                  transition={{ delay: t(0.55), duration: t(0.2) }}
                 />
-              )}
-              <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[radial-gradient(circle_at_32%_28%,_#ffffff_0%,_#fff6dc_45%,_#e2c479_100%)] shadow-[0_6px_16px_rgba(90,63,16,0.4),inset_0_-3px_6px_rgba(166,124,42,0.35)] sm:h-16 sm:w-16">
-                <div className="absolute inset-1.5 rounded-full border border-[#c29a45]/70" />
-                <span className="font-serif text-sm font-semibold tracking-tight text-[#8a6420] sm:text-base">
-                  N&amp;N
-                </span>
-              </div>
+              </svg>
             </motion.div>
+            <div
+              className="absolute left-1/2 top-[36%] z-40"
+              style={{ transform: "translate(-50%, -50%)" }}
+            >
+              <motion.div
+                className="relative"
+                animate={
+                  isOpening
+                    ? {
+                        scale: [1, 1.2, 0.2],
+                        opacity: [1, 1, 0],
+                        rotate: [0, -8, 20],
+                      }
+                    : reduce
+                      ? undefined
+                      : { scale: [1, 1.05, 1] }
+                }
+                transition={
+                  isOpening
+                    ? { duration: t(0.4), ease: "easeIn" }
+                    : { duration: 2.6, repeat: Infinity, ease: "easeInOut" }
+                }
+              >
+                {!isOpening && !reduce && (
+                  <motion.span
+                    className="absolute inset-0 rounded-full border-2 border-[#c29a45]"
+                    animate={{ scale: [1, 1.6], opacity: [0.8, 0] }}
+                    transition={{
+                      duration: 2.6,
+                      repeat: Infinity,
+                      ease: "easeOut",
+                    }}
+                  />
+                )}
+                <MonogramSeal className="relative h-[76px] w-[76px] sm:h-[88px] sm:w-[88px]" />
+              </motion.div>
+            </div>
           </motion.div>
-
-          {/* Clear call to action */}
-          <motion.button
-            type="button"
-            onClick={handleTouch}
-            disabled={stage !== "closed"}
-            className="mt-12 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#a67c2a] bg-white px-7 py-3 text-sm tracking-[0.12em] text-[#8a6420] shadow-[0_8px_24px_-10px_rgba(166,124,42,0.6)] outline-none transition-colors duration-300 hover:bg-[#fff6dc] focus-visible:ring-2 focus-visible:ring-[#c29a45] focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:text-base"
-            animate={{
-              opacity: stage === "closed" ? 1 : 0,
-              y: stage === "closed" ? 0 : 10,
-            }}
-            transition={{ duration: t(0.4) }}
-          >
-            <span aria-hidden="true">✦</span>
-            <span>ආරාධනාව විවෘත කරන්න</span>
-          </motion.button>
-
-          <motion.p
-            className="mt-3 text-center text-xs tracking-[0.2em] text-[#8a6420]/80"
-            animate={{ opacity: stage === "closed" ? 1 : 0 }}
-            transition={{ duration: t(0.3) }}
-          >
-            Tap the envelope to open
-          </motion.p>
         </motion.div>
-
-        {/* ============ STAGE 2: FULL INVITATION CARD ============ */}
         <AnimatePresence>
           {stage === "revealed" && (
             <motion.div
               key="card"
-              className="relative my-auto w-[min(90vw,440px)] overflow-hidden border border-[#c29a45] bg-gradient-to-b from-white via-[#fffdf8] to-[#fff6e0] shadow-[0_30px_80px_-25px_rgba(166,124,42,0.65)]"
+              className="relative my-auto w-[min(92vw,460px)] overflow-hidden border border-[#c29a45] bg-gradient-to-b from-white via-[#fffdf8] to-[#fff6e0] shadow-[0_30px_80px_-25px_rgba(166,124,42,0.65)]"
               initial={{
                 opacity: 0,
                 scale: 0.78,
@@ -332,7 +442,6 @@ export default function InvitationIntro({ onOpen }: InvitationIntroProps) {
               }}
               style={{ transformPerspective: 1200 }}
             >
-              {/* One-time gold light sweep */}
               {!reduce && (
                 <motion.div
                   className="pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-[#ecd089]/50 to-transparent"
@@ -342,30 +451,19 @@ export default function InvitationIntro({ onOpen }: InvitationIntroProps) {
                 />
               )}
 
-              {/* Gold top band */}
               <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#c29a45] via-[#ecd089] to-[#c29a45]" />
-
-              {/* Inner frame and corners */}
               <div className="pointer-events-none absolute inset-2.5 border border-[#c29a45]/50" />
               <div className="pointer-events-none absolute inset-4 border border-[#c29a45]/20" />
               <span className="pointer-events-none absolute left-5 top-5 h-5 w-5 border-l border-t border-[#a67c2a]" />
               <span className="pointer-events-none absolute right-5 top-5 h-5 w-5 border-r border-t border-[#a67c2a]" />
               <span className="pointer-events-none absolute bottom-5 left-5 h-5 w-5 border-b border-l border-[#a67c2a]" />
               <span className="pointer-events-none absolute bottom-5 right-5 h-5 w-5 border-b border-r border-[#a67c2a]" />
-
               <motion.div
-                className="relative z-10 flex flex-col items-center px-9 py-12 text-center sm:px-12"
+                className="relative z-10 flex flex-col items-center px-8 py-12 text-center sm:px-11"
                 variants={cardContainer}
                 initial={reduce ? "show" : "hidden"}
                 animate="show"
               >
-                <motion.p
-                  variants={cardItem}
-                  className="font-serif text-base italic tracking-wide text-[#8a6420]"
-                >
-                  With love &amp; joy
-                </motion.p>
-
                 <motion.div
                   variants={cardItem}
                   className="relative my-4 h-24 w-24 sm:h-28 sm:w-28"
@@ -379,23 +477,36 @@ export default function InvitationIntro({ onOpen }: InvitationIntroProps) {
                     className="object-contain"
                   />
                 </motion.div>
+                <motion.div variants={cardItem} className="text-center">
+                  <p className="text-base leading-8 text-[#8a6420] sm:text-lg">
+                    අපගේ මංගල මංගල්‍යට කෙරෙන
+                  </p>
 
-                <motion.p
-                  variants={cardItem}
-                  className="text-sm tracking-[0.14em] text-[#8a6420] sm:text-base"
-                >
-                  අපේ ආදර කතාවට ඔබට ආරාධනායි
-                </motion.p>
+                  <div className="my-2 flex items-center justify-center gap-3">
+                    <span className="h-px w-8 bg-[#c29a45]/70" />
+
+                    <p
+                      className="text-lg font-semibold tracking-wide text-[#a67c2a] sm:text-xl"
+                      style={bodyFont}
+                    >
+                      ආරාධනයයි මේ
+                    </p>
+
+                    <span className="h-px w-8 bg-[#c29a45]/70" />
+                  </div>
+                </motion.div>
 
                 <motion.h1
                   variants={cardItem}
-                  className="mt-3 font-serif text-4xl font-normal leading-tight tracking-wide text-[#5a3f10] sm:text-5xl"
+                  className="mt-4 text-4xl font-medium leading-[1.05] tracking-wide text-[#5a3f10] sm:text-4xl"
+                  style={bodyFont}
                 >
-                  Nipuni
-                  <span className="mx-3 text-[#c29a45]">&amp;</span>
-                  Nipuna
+                  නිපුනි
+                  <span className="block text-3xl italic text-[#c29a45] sm:text-4xl">
+                    &amp;
+                  </span>
+                  නිපුන
                 </motion.h1>
-
                 <motion.div
                   variants={cardItem}
                   className="my-5 flex items-center gap-3"
@@ -404,57 +515,35 @@ export default function InvitationIntro({ onOpen }: InvitationIntroProps) {
                   <span className="text-sm text-[#c29a45]">❦</span>
                   <span className="h-px w-12 bg-[#c29a45]/60" />
                 </motion.div>
-
-                <motion.p
-                  variants={cardItem}
-                  className="max-w-xs text-sm leading-7 text-[#6b5320] sm:text-base sm:leading-8"
-                >
-                  දොළොස් වසරක් පුරා ආදරයෙන් ලියැවුණු
-                  <br />
-                  අපේ සුන්දර කතාවේ විශේෂ දවසට
-                  <br />
-                  ඔබව ආදරයෙන් පිළිගනිමු.
-                </motion.p>
-
                 <motion.div
                   variants={cardItem}
-                  className="mt-6 w-full border-y border-[#c29a45]/40 py-4"
+                  className="mt-8 flex w-full flex-col items-center gap-3"
                 >
-                  <p className="font-serif text-2xl text-[#5a3f10]">
-                    15 · 01 · 2027
-                  </p>
-                  <p className="mt-1 text-sm text-[#8a6420]">
-                    පෙ.ව. 9.05 · Season, Waskaduwa
-                  </p>
+                  <motion.button
+                    type="button"
+                    onClick={onOpen}
+                    whileHover={reduce ? undefined : { scale: 1.03 }}
+                    whileTap={reduce ? undefined : { scale: 0.97 }}
+                    className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-gradient-to-b from-[#b88a30] to-[#8a6420] px-9 py-3 text-base tracking-[0.1em] text-white shadow-[0_12px_30px_-12px_rgba(138,100,32,0.9)] outline-none transition-shadow duration-300 hover:shadow-[0_14px_34px_-10px_rgba(138,100,32,1)] focus-visible:ring-2 focus-visible:ring-[#c29a45] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  >
+                    <span>ආරාධනාව බලන්න</span>
+                    <span aria-hidden="true">↓</span>
+                  </motion.button>
+                  <a
+                    href={CALENDAR_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[#a67c2a] bg-white px-7 py-2.5 text-sm tracking-[0.06em] text-[#8a6420] outline-none transition-colors duration-300 hover:bg-[#fff6dc] focus-visible:ring-2 focus-visible:ring-[#c29a45] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  >
+                    <span aria-hidden="true">✦</span>
+                    <span>කැලැන්ඩරයට එකතු කරන්න</span>
+                  </a>
                 </motion.div>
-
-                <motion.button
-                  variants={cardItem}
-                  type="button"
-                  onClick={onOpen}
-                  whileHover={reduce ? undefined : { scale: 1.04 }}
-                  whileTap={reduce ? undefined : { scale: 0.97 }}
-                  className="mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-gradient-to-b from-[#b88a30] to-[#8a6420] px-9 py-3 text-sm tracking-[0.12em] text-white shadow-[0_12px_30px_-12px_rgba(138,100,32,0.9)] outline-none transition-shadow duration-300 hover:shadow-[0_14px_34px_-10px_rgba(138,100,32,1)] focus-visible:ring-2 focus-visible:ring-[#c29a45] focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:text-base"
-                >
-                  <span>ආරාධනාව බලන්න</span>
-                  <span aria-hidden="true">↓</span>
-                </motion.button>
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
-
-      {/* Skip, for guests who want to go straight in */}
-      {stage === "closed" && (
-        <button
-          type="button"
-          onClick={onOpen}
-          className="absolute bottom-7 left-1/2 z-20 -translate-x-1/2 rounded px-3 py-2 text-xs tracking-[0.15em] text-[#8a6420]/80 underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-[#c29a45] sm:bottom-10"
-        >
-          Skip intro
-        </button>
-      )}
     </motion.section>
   );
 }

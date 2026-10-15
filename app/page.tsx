@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -18,38 +17,34 @@ export default function Home() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      {!isInvitationOpen ? (
-        <InvitationIntro
-          key="invitation-intro"
-          onOpen={() => setIsInvitationOpen(true)}
-        />
-      ) : (
-        <motion.div
-          key="wedding-content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.9 }}
-        >
-          <main className="min-h-screen overflow-hidden bg-[#f1e3ce] text-[#4a2c17]">
-            <HeroSection />
-            <StoryIntro />
-            <ParentsSection />
+    <>
+      <AnimatePresence mode="wait" initial={false}>
+        {!isInvitationOpen ? (
+          <InvitationIntro
+            key="invitation-intro"
+            onOpen={() => setIsInvitationOpen(true)}
+          />
+        ) : (
+          <motion.div
+            key="wedding-content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9 }}
+          >
+            <main className="min-h-screen overflow-hidden bg-[#f1e3ce] text-[#4a2c17]">
+              <HeroSection />
+              <StoryIntro />
+              <ParentsSection />
+              <WeddingDetails />
+              <CountdownSection />
+              <RSVPSection />
+              <FinalSection />
+            </main>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-            {/* Uncomment these sections when you want to display them */}
-            {/* <MemorySection /> */}
-            {/* <PreShootSection /> */}
-            {/* <EmotionalTransition /> */}
-
-            <WeddingDetails />
-            <CountdownSection />
-            <RSVPSection />
-            <FinalSection />
-          </main>
-
-          <MusicPlayer />
-        </motion.div>
-      )}
-    </AnimatePresence>
+      <MusicPlayer />
+    </>
   );
 }
